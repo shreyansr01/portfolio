@@ -32,7 +32,7 @@
 
 ```bash
 # Clone and install dependencies
-git clone https://github.com/ShreyanDev5/shreyan-dev.git
+git clone https://github.com/shreyansr01/shreyan-dev.git
 cd shreyan-dev
 npm install
 
@@ -44,4 +44,4 @@ npm run dev
 
 ## Author
 
-**Shreyan Sardar** — [Portfolio](https://shreyandev.vercel.app) · [GitHub](https://github.com/ShreyanDev5) · [LinkedIn](https://www.linkedin.com/in/shreyansardar/)
+**Shreyan Sardar** — [Portfolio](https://shreyandev.vercel.app) · [GitHub](https://github.com/shreyansr01) · [LinkedIn](https://www.linkedin.com/in/shreyansardar/)

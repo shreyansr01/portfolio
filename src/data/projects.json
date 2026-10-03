@@ -7,7 +7,7 @@
     "category": "Showcase Project",
     "tags": ["Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "React"],
     "liveUrl": null,
-    "githubUrl": "https://github.com/ShreyanDev5/crate",
+    "githubUrl": "https://github.com/shreyansr01/crate",
     "imageVariant": "landscape",
     "techDetails": {
       "scope": "Transitioned from Java to Python backend engineering—applying FastAPI validation, PostgreSQL relational modeling, and centralized database session lifecycles hands-on.",
@@ -27,7 +27,7 @@
     "category": "Showcase Project",
     "tags": ["Java", "Spring Boot", "Spring Data JPA", "H2", "Docker", "React"],
     "liveUrl": "https://springmart.netlify.app/",
-    "githubUrl": "https://github.com/ShreyanDev5/spring-mart",
+    "githubUrl": "https://github.com/shreyansr01/spring-mart",
     "imageVariant": "landscape",
     "techDetails": {
       "scope": "Built to design and containerize a full-stack Java application from scratch using Spring Boot, Spring Data JPA, and Docker.",
@@ -47,7 +47,7 @@
     "category": "Showcase Project",
     "tags": ["Java", "MySQL", "JDBC", "Maven"],
     "liveUrl": null,
-    "githubUrl": "https://github.com/ShreyanDev5/student-management-system",
+    "githubUrl": "https://github.com/shreyansr01/student-management-system",
     "imageVariant": "portrait",
     "techDetails": {
       "scope": "My first coding project—built to learn Java and MySQL, separating business logic from database operations with JDBC from scratch.",
@@ -67,7 +67,7 @@
     "category": "Personal Tool",
     "tags": ["Next.js", "Supabase", "PostgreSQL", "TypeScript"],
     "liveUrl": "https://wrkout-tracker.vercel.app/",
-    "githubUrl": "https://github.com/ShreyanDev5/wrkout",
+    "githubUrl": "https://github.com/shreyansr01/wrkout",
     "imageVariant": "landscape",
     "techDetails": {
       "scope": "Built when I first joined the gym dealing with Class 1 obesity at 94 kg (207 lbs). Designed around a Push-Pull-Legs split to track progressive overload, and used daily to lose 30 kg (66 lbs) in 1 year.",
@@ -92,7 +92,7 @@
     "category": "Personal Tool",
     "tags": ["React", "TypeScript", "Firebase"],
     "liveUrl": "https://shreyans-arc.vercel.app/",
-    "githubUrl": "https://github.com/ShreyanDev5/shreyans-arc",
+    "githubUrl": "https://github.com/shreyansr01/shreyans-arc",
     "imageVariant": "landscape",
     "techDetails": {
       "scope": "Built to cut out duplicate LeetCode grind—distilling 37 high-yield problems across 8 core patterns into an interactive canvas.",
@@ -112,7 +112,7 @@
     "category": "Personal Tool",
     "tags": ["React", "Monaco Editor"],
     "liveUrl": "https://j-void.vercel.app/",
-    "githubUrl": "https://github.com/ShreyanDev5/j-void",
+    "githubUrl": "https://github.com/shreyansr01/j-void",
     "imageVariant": "landscape",
     "techDetails": {
       "scope": "Built without LeetCode's UI clutter to write and review clean Java solutions alongside Shreyan's Arc.",
@@ -132,7 +132,7 @@
     "category": "Client Project",
     "tags": ["Next.js", "TypeScript", "Tailwind CSS", "Jest"],
     "liveUrl": "https://monotosh.vercel.app/",
-    "githubUrl": "https://github.com/ShreyanDev5/wealth-wise",
+    "githubUrl": "https://github.com/shreyansr01/wealth-wise",
     "imageVariant": "landscape",
     "techDetails": {
       "scope": "Built for my father's advisory practice so clients can explore services and calculate financial goals before initial consultations.",

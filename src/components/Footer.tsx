@@ -34,7 +34,7 @@ const LeetCodeIcon = ({ className }: { className?: string }) => (
 const FOOTER_LINKS = [
   {
     name: "GitHub",
-    href: "https://github.com/ShreyanDev5",
+    href: "https://github.com/shreyansr01",
     icon: GitHubIcon,
   },
   {
