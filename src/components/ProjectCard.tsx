@@ -183,11 +183,11 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute -inset-[1px] z-30 flex flex-col bg-[#131211] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden"
+            className="absolute -inset-[1px] z-30 flex flex-col bg-[#131211] border border-white/15 p-4 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Overlay Header & Close Button (Sticky at Top - Connected Edge to Edge) */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-2.5 -mx-4 sm:-mx-4.5 px-4 sm:px-4.5 shrink-0">
+            <div className="flex items-center justify-between border-b border-white/10 pb-2.5 -mx-4 px-4 shrink-0">
               <span className="text-[14px] sm:text-[15px] font-bold text-warm-100 tracking-tight truncate">
                 {project.title}
               </span>
@@ -205,15 +205,15 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
               </button>
             </div>
 
-            <div className="flex-1 flex flex-col justify-start pt-2.5 overflow-y-auto">
+            <div className="flex-1 flex flex-col justify-start pt-2.5 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {/* Why I Built This (Title Case, not all-caps) */}
               {project.techDetails?.scope && (
-                <div className="flex-1 flex flex-col justify-start">
-                  <div className="flex items-center gap-1.5 text-[11.5px] sm:text-[12px] font-semibold text-emerald-400 mb-1.5">
-                    <BookOpen size={12.5} className="text-emerald-400 shrink-0" />
+                <div className="flex flex-col justify-start">
+                  <div className="flex items-center gap-1.5 text-[11px] sm:text-[11.5px] font-semibold text-emerald-400 mb-1.5">
+                    <BookOpen size={12} className="text-emerald-400 shrink-0" />
                     <span>Why I Built This</span>
                   </div>
-                  <p className="text-[13px] sm:text-[13.5px] text-warm-200 font-normal leading-[1.55]">
+                  <p className="text-[12.5px] sm:text-[13px] text-warm-200 font-normal leading-[1.5]">
                     {project.techDetails.scope}
                   </p>
                 </div>
@@ -221,23 +221,19 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
 
               {/* Demo Credentials (wrkout only) */}
               {project.techDetails?.credentials && (
-                <div className="pt-1.5 sm:pt-2 space-y-1 sm:space-y-1.5 shrink-0">
+                <div className="mt-3 space-y-1.5 shrink-0">
                   <div className="flex items-center gap-1.5 text-[10px] sm:text-[10.5px] font-mono text-emerald-400">
                     <KeyRound size={11} className="text-emerald-400 shrink-0" />
                     <span className="font-semibold">Demo Credentials</span>
                   </div>
 
-                  {project.techDetails.credentials.notice && (
-                    <p className="hidden sm:block text-[10px] sm:text-[10.5px] text-warm-400 font-normal leading-snug">
-                      {project.techDetails.credentials.notice}
-                    </p>
-                  )}
-
-                  <div className="rounded-xl border border-white/10 bg-[#1c1b1a] px-2.5 py-1 sm:py-1.5 space-y-1 sm:space-y-1.5">
+                  <div className="rounded-xl border border-white/10 bg-[#1c1b1a] px-2.5 py-1.5 space-y-1.5">
                     {/* User Row */}
                     <div className="flex items-center justify-between text-[10px] sm:text-[10.5px] font-mono">
                       <span className="text-warm-400">
-                        User: <span className="text-warm-100 font-medium select-all">{project.techDetails.credentials.username}</span>
+                        <span className="sm:hidden">User: </span>
+                        <span className="hidden sm:inline">Username: </span>
+                        <span className="text-warm-100 font-medium select-all">{project.techDetails.credentials.username}</span>
                       </span>
                       <button
                         type="button"
@@ -270,7 +266,9 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                     {/* Pass Row */}
                     <div className="flex items-center justify-between text-[10px] sm:text-[10.5px] font-mono">
                       <span className="text-warm-400">
-                        Pass: <span className="text-warm-100 font-medium select-all">{project.techDetails.credentials.password}</span>
+                        <span className="sm:hidden">Pass: </span>
+                        <span className="hidden sm:inline">Password: </span>
+                        <span className="text-warm-100 font-medium select-all">{project.techDetails.credentials.password}</span>
                       </span>
                       <button
                         type="button"

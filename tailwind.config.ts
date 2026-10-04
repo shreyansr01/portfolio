@@ -39,19 +39,19 @@ const config = {
           950: "#0c0c0d",
         },
         emerald: {
-          300: "#34d399",
-          400: "#10b981",
-          500: "#059669",
-          600: "#047857",
-          700: "#065f46",
-          800: "#064e3b",
-          900: "#022c22",
+          300: "#ffa085",
+          400: "#ff6e4a",
+          500: "#fb542b",
+          600: "#d93c14",
+          700: "#b02d0b",
+          800: "#7a1e06",
+          900: "#421003",
         },
         border: "hsl(0 0% 14.9%)",
         input: "hsl(0 0% 14.9%)",
-        ring: "hsl(142 71% 45%)",
+        ring: "hsl(12 96% 58%)",
         primary: {
-          DEFAULT: "hsl(142 71% 45%)",
+          DEFAULT: "hsl(12 96% 58%)",
           foreground: "hsl(0 0% 100%)",
         },
         secondary: {
@@ -81,11 +81,11 @@ const config = {
         "1.75": "1.75px",
       },
       boxShadow: {
-        'button-emerald': '0 4px 14px 0 rgba(16, 185, 129, 0.39)',
+        'button-emerald': '0 4px 14px 0 rgba(251, 84, 43, 0.35)',
         'contact-card': '0 8px 30px rgba(0, 0, 0, 0.12)',
       },
       backgroundImage: {
-        'multi-gradient': 'linear-gradient(to right, #3b82f6, #8b5cf6, #10b981)',
+        'multi-gradient': 'linear-gradient(to right, #3b82f6, #8b5cf6, #fb542b)',
       },
       animation: {
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
