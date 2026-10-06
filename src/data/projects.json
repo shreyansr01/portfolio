@@ -10,7 +10,7 @@
     "githubUrl": "https://github.com/shreyansr01/crate",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Transitioned from Java to Python backend engineering—applying FastAPI validation, PostgreSQL relational modeling, and centralized database session lifecycles hands-on.",
+      "scope": "Transitioned from Java to Python backend engineering—applying FastAPI validation, PostgreSQL relational modeling, and centralized database session lifecycles.",
       "architecture": "Python • FastAPI • SQLAlchemy • PostgreSQL • React",
       "highlights": [
         "REST API with Pydantic v2 schema validation and interactive Swagger UI docs",
@@ -30,7 +30,7 @@
     "githubUrl": "https://github.com/shreyansr01/spring-mart",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built to design and containerize a full-stack Java application from scratch using Spring Boot, Spring Data JPA, and Docker.",
+      "scope": "Built to create and containerize a full-stack Java application from scratch using Spring Boot, Spring Data JPA, and Docker.",
       "architecture": "Java • Spring Boot • Spring Data JPA • H2 • Docker • React",
       "highlights": [
         "REST API with custom JPQL multi-field search, pagination, and startup auto-seeding in H2",
@@ -70,7 +70,7 @@
     "githubUrl": "https://github.com/shreyansr01/wrkout",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built when I first joined the gym dealing with Class 1 obesity at 94 kg (207 lbs). Designed around a Push-Pull-Legs split to track progressive overload, and used daily to lose 30 kg (66 lbs) in 1 year.",
+      "scope": "Built when I first joined the gym while dealing with Class 1 obesity at 94 kg (207 lbs). Designed around a Push-Pull-Legs split to track progressive overload, and used daily to lose 30 kg (66 lbs) in 1 year.",
       "architecture": "Next.js • Supabase (PostgreSQL) • TypeScript",
       "highlights": [
         "Fast set logging with inline steppers, one-tap saving, and audio/haptic feedback",
@@ -78,7 +78,7 @@
         "Supabase Auth and PostgreSQL with Row Level Security (RLS)"
       ],
       "credentials": {
-        "notice": "Hosted on Vercel. Use the demo credentials below or register freely.",
+        "notice": "Hosted on Vercel. Use the demo credentials below or register for free.",
         "username": "demo",
         "password": "TestPassword123"
       }
@@ -95,7 +95,7 @@
     "githubUrl": "https://github.com/shreyansr01/shreyans-arc",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built to cut out duplicate LeetCode grind—distilling 37 high-yield problems across 8 core patterns into an interactive canvas.",
+      "scope": "Built to cut out the repetitive LeetCode grind—distilling 37 high-yield problems across 8 core patterns into an interactive canvas.",
       "architecture": "React • TypeScript • Firebase",
       "highlights": [
         "Interactive pan-and-zoom canvas to explore connected algorithmic patterns",

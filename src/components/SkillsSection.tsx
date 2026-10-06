@@ -94,7 +94,7 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
               {/* Overlay Content */}
               <div className="flex-1 flex flex-col justify-start pt-2.5 sm:pt-3 text-xs overflow-y-auto">
                 <p className="text-[12px] sm:text-[12.5px] text-warm-300 font-normal leading-[1.55]">
-                  High-level understanding of architectural trade-offs and use cases. No production hands-on experience yet—looking to build it within a product team.
+                  High-level understanding of architectural trade-offs and use cases. No hands-on production experience yet—looking to build it within a product team.
                 </p>
               </div>
             </motion.div>
