@@ -8,9 +8,9 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-transparent text-white">
-      <div className="max-w-3xl mx-auto sm:border-x border-white/[0.08] min-h-screen">
-        <main className="relative z-10 divide-y divide-white/[0.05]">
+    <div className="min-h-screen bg-transparent text-warm-100">
+      <div className="max-w-3xl mx-auto sm:border-x border-black/[0.08] dark:border-white/[0.08] min-h-screen">
+        <main className="relative z-10 divide-y divide-black/[0.06] dark:divide-white/[0.05]">
           <div id="home">
             <Hero />
           </div>

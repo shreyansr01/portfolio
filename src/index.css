@@ -10,6 +10,54 @@
   --card: 30 6% 8%;
   --card-foreground: 40 10% 91%;
   --border: 36 5% 16%;
+
+  /* Dark mode warm scale */
+  --warm-50: 247 246 244;
+  --warm-100: 240 239 234;
+  --warm-200: 232 231 228;
+  --warm-300: 212 209 202;
+  --warm-400: 200 197 189;
+  --warm-500: 154 151 144;
+  --warm-600: 138 135 128;
+  --warm-700: 74 72 68;
+  --warm-800: 34 33 32;
+  --warm-900: 21 20 19;
+  --warm-950: 12 12 13;
+
+  /* Dark mode accent flame (vivid Brave-orange) */
+  --accent-300: 255 160 133;
+  --accent-400: 255 110 74;
+  --accent-500: 251 84 43;
+  --accent-600: 217 60 20;
+}
+
+html.light, .light {
+  --background: 43 27% 95.5%;
+  --foreground: 24 10% 10%;
+  --muted: 40 15% 90%;
+  --muted-foreground: 30 8% 45%;
+  --card: 40 22% 93%;
+  --card-foreground: 24 10% 10%;
+  --border: 35 12% 82%;
+
+  /* Warm paper light scale */
+  --warm-50: 12 10 9;
+  --warm-100: 28 25 23;
+  --warm-200: 40 35 29;
+  --warm-300: 61 55 46;
+  --warm-400: 82 76 67;
+  --warm-500: 110 102 89;
+  --warm-600: 140 130 117;
+  --warm-700: 214 208 197;
+  --warm-800: 229 224 216;
+  --warm-900: 239 236 230;
+  --warm-950: 247 245 240;
+
+  /* Warm paper light accent (roasted rust / terracotta) */
+  --accent-300: 217 60 20;
+  --accent-400: 194 51 13;
+  --accent-500: 176 45 11;
+  --accent-600: 153 38 9;
 }
 
 @layer base {
@@ -49,7 +97,7 @@
   }
 
   ::selection {
-    @apply bg-emerald-500/30 text-white;
+    @apply bg-emerald-500/30 text-warm-100;
   }
 }
 
@@ -73,7 +121,7 @@
 }
 
 :focus-visible {
-  @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-[#0c0c0d];
+  @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-background;
 }
 
 /* Reduced Motion */

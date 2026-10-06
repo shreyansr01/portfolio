@@ -23,26 +23,26 @@ const config = {
         signature: ['"Caveat"', 'cursive'],
       },
       colors: {
-        background: "#0c0c0d",
-        foreground: "#F0EFEA",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         warm: {
-          50: "#F7F6F4",
-          100: "#F0EFEA", // Primary text / Alabaster
-          200: "#E8E7E4", // Accent white / Card headings
-          300: "#D4D1CA", // Secondary body text
-          400: "#C8C5BD", // Soft warm text
-          500: "#9A9790", // Muted metadata / taupe
-          600: "#8A8780", // Section counters (01 //)
-          700: "#4A4844",
-          800: "#222120",
-          900: "#151413",
-          950: "#0c0c0d",
+          50: "rgb(var(--warm-50) / <alpha-value>)",
+          100: "rgb(var(--warm-100) / <alpha-value>)",
+          200: "rgb(var(--warm-200) / <alpha-value>)",
+          300: "rgb(var(--warm-300) / <alpha-value>)",
+          400: "rgb(var(--warm-400) / <alpha-value>)",
+          500: "rgb(var(--warm-500) / <alpha-value>)",
+          600: "rgb(var(--warm-600) / <alpha-value>)",
+          700: "rgb(var(--warm-700) / <alpha-value>)",
+          800: "rgb(var(--warm-800) / <alpha-value>)",
+          900: "rgb(var(--warm-900) / <alpha-value>)",
+          950: "rgb(var(--warm-950) / <alpha-value>)",
         },
         emerald: {
-          300: "#ffa085",
-          400: "#ff6e4a",
-          500: "#fb542b",
-          600: "#d93c14",
+          300: "rgb(var(--accent-300) / <alpha-value>)",
+          400: "rgb(var(--accent-400) / <alpha-value>)",
+          500: "rgb(var(--accent-500) / <alpha-value>)",
+          600: "rgb(var(--accent-600) / <alpha-value>)",
           700: "#b02d0b",
           800: "#7a1e06",
           900: "#421003",

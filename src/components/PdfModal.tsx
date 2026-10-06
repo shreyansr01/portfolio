@@ -131,13 +131,13 @@ const PdfModal: FC<PdfModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: 8 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 bg-[#151413] border border-white/10 rounded-xl sm:rounded-2xl w-[94%] max-w-[440px] sm:max-w-[760px] sm:w-full h-[70vh] sm:h-[80vh] max-h-[580px] sm:max-h-[740px] min-h-[380px] sm:min-h-[460px] flex flex-col shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)] overflow-hidden my-auto"
+            className="relative z-10 bg-warm-900 border border-black/10 dark:border-white/10 rounded-xl sm:rounded-2xl w-[94%] max-w-[440px] sm:max-w-[760px] sm:w-full h-[70vh] sm:h-[80vh] max-h-[580px] sm:max-h-[740px] min-h-[380px] sm:min-h-[460px] flex flex-col shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)] overflow-hidden my-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-3 py-2 sm:px-4.5 sm:py-3 border-b border-white/10 bg-[#181716] shrink-0">
+            <div className="flex items-center justify-between px-3 py-2 sm:px-4.5 sm:py-3 border-b border-black/10 dark:border-white/10 bg-warm-800 shrink-0">
               <div className="flex items-center gap-2 min-w-0 pr-2">
-                <div className="p-1 rounded-md bg-white/[0.04] border border-white/10 text-warm-300 shrink-0">
+                <div className="p-1 rounded-md bg-black/[0.04] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 text-warm-300 shrink-0">
                   <FileText className="w-4 h-4" />
                 </div>
                 <h2 className="text-sm sm:text-[15px] font-heading font-semibold text-warm-100 tracking-tight truncate">
@@ -151,13 +151,13 @@ const PdfModal: FC<PdfModalProps> = ({
                   <button
                     type="button"
                     onClick={handleOpenInNewTab}
-                    className="group/btn p-1.5 rounded-lg border border-white/10 bg-white/[0.04] text-warm-300 hover:bg-white hover:text-black hover:border-white transition-all duration-200 active:scale-95"
+                    className="group/btn p-1.5 rounded-lg border border-black/10 dark:border-white/10 bg-black/[0.04] dark:bg-white/[0.04] text-warm-300 hover:bg-warm-100 dark:hover:bg-white hover:text-warm-950 dark:hover:text-black hover:border-warm-100 dark:hover:border-white transition-all duration-200 active:scale-95"
                     aria-label="Open PDF in new tab"
                   >
-                    <ExternalLink className="w-3.5 h-3.5 text-warm-300 group-hover/btn:text-black transition-colors duration-200" />
+                    <ExternalLink className="w-3.5 h-3.5 text-warm-300 group-hover/btn:text-warm-950 dark:group-hover/btn:text-black transition-colors duration-200" />
                   </button>
                   <div className="hidden sm:block absolute right-0 top-full mt-1.5 opacity-0 pointer-events-none group-hover/tooltip:opacity-100 transition-opacity duration-150 z-50">
-                    <div className="px-2 py-0.5 rounded bg-[#1c1b1a] border border-white/15 text-[10px] font-mono text-warm-300 shadow-xl whitespace-nowrap">
+                    <div className="px-2 py-0.5 rounded bg-warm-800 border border-black/15 dark:border-white/15 text-[10px] font-mono text-warm-300 shadow-xl whitespace-nowrap">
                       Open in new tab
                     </div>
                   </div>
@@ -167,13 +167,13 @@ const PdfModal: FC<PdfModalProps> = ({
                   <button
                     type="button"
                     onClick={onClose}
-                    className="group/btn p-1.5 rounded-lg border border-white/10 bg-white/[0.04] text-warm-300 hover:bg-white hover:text-black hover:border-white transition-all duration-200 active:scale-95"
+                    className="group/btn p-1.5 rounded-lg border border-black/10 dark:border-white/10 bg-black/[0.04] dark:bg-white/[0.04] text-warm-300 hover:bg-warm-100 dark:hover:bg-white hover:text-warm-950 dark:hover:text-black hover:border-warm-100 dark:hover:border-white transition-all duration-200 active:scale-95"
                     aria-label="Close modal"
                   >
-                    <X className="w-3.5 h-3.5 text-warm-300 group-hover/btn:text-black transition-colors duration-200" />
+                    <X className="w-3.5 h-3.5 text-warm-300 group-hover/btn:text-warm-950 dark:group-hover/btn:text-black transition-colors duration-200" />
                   </button>
                   <div className="hidden sm:block absolute right-0 top-full mt-1.5 opacity-0 pointer-events-none group-hover/tooltip:opacity-100 transition-opacity duration-150 z-50">
-                    <div className="px-2 py-0.5 rounded bg-[#1c1b1a] border border-white/15 text-[10px] font-mono text-warm-300 shadow-xl whitespace-nowrap">
+                    <div className="px-2 py-0.5 rounded bg-warm-800 border border-black/15 dark:border-white/15 text-[10px] font-mono text-warm-300 shadow-xl whitespace-nowrap">
                       Close (Esc)
                     </div>
                   </div>
@@ -182,26 +182,26 @@ const PdfModal: FC<PdfModalProps> = ({
             </div>
 
             {/* Viewer Body */}
-            <div className="relative flex-1 min-h-0 bg-[#0c0c0d] overflow-hidden">
+            <div className="relative flex-1 min-h-0 bg-warm-950 overflow-hidden">
               {isPdfSupported ? (
                 pdfUrl && (
                   <iframe
                     src={pdfUrl}
-                    className="w-full h-full border-none bg-[#0c0c0d]"
+                    className="w-full h-full border-none bg-warm-950"
                     title={`${title} Preview`}
                     onError={handlePdfError}
                   />
                 )
               ) : (
-                <div className="w-full h-full flex items-center justify-center p-6 bg-[#0c0c0d]">
+                <div className="w-full h-full flex items-center justify-center p-6 bg-warm-950">
                   <div className="text-center max-w-sm">
                     <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-3 text-emerald-400">
                       <FileText className="w-6 h-6" />
                     </div>
-                    <h3 className="text-sm font-semibold text-white mb-1">
+                    <h3 className="text-sm font-semibold text-warm-100 mb-1">
                       PDF Preview Unavailable
                     </h3>
-                    <p className="text-xs text-neutral-400 mb-4 leading-relaxed font-mono">
+                    <p className="text-xs text-warm-500 mb-4 leading-relaxed font-mono">
                       Your browser does not support inline PDF viewing. Please download the document to view it.
                     </p>
                     <button
@@ -218,10 +218,10 @@ const PdfModal: FC<PdfModalProps> = ({
             </div>
 
             {/* Footer */}
-            <div className="flex items-center justify-between gap-2.5 px-3 py-2 sm:px-4.5 sm:py-2.5 border-t border-white/10 bg-[#181716] shrink-0">
+            <div className="flex items-center justify-between gap-2.5 px-3 py-2 sm:px-4.5 sm:py-2.5 border-t border-black/10 dark:border-white/10 bg-warm-800 shrink-0">
               {/* Document Filename Meta - Full name displayed without premature cutoff */}
               <div className="flex items-center gap-1 min-w-0 flex-1">
-                <span className="text-[10.5px] sm:text-xs font-mono text-neutral-400 truncate select-all">
+                <span className="text-[10.5px] sm:text-xs font-mono text-warm-500 truncate select-all">
                   {downloadName}
                 </span>
               </div>

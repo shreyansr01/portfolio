@@ -82,7 +82,7 @@ const JourneySection: FC = () => {
           <div
             style={lineHeight ? { height: `${lineHeight}px` } : undefined}
             className={cn(
-              "absolute top-[10px] left-[16px] w-px -translate-x-1/2 bg-white/10 pointer-events-none",
+              "absolute top-[10px] left-[16px] w-px -translate-x-1/2 bg-black/10 dark:bg-white/10 pointer-events-none",
               !lineHeight && "bottom-[20px]"
             )}
           />
@@ -97,10 +97,10 @@ const JourneySection: FC = () => {
                   className="absolute left-[16px] top-[10px] z-10 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none h-5 w-5"
                 >
                   <div className="relative flex h-3.5 w-3.5 items-center justify-center">
-                    {/* Crisp outer ring with opaque dark background to cleanly cover the line */}
-                    <div className="absolute inset-0 rounded-full border border-white/15 bg-[#0c0c0d]" />
+                    {/* Crisp outer ring with opaque canvas background to cleanly cover the line */}
+                    <div className="absolute inset-0 rounded-full border border-black/15 dark:border-white/15 bg-warm-950" />
                     {/* Quiet neutral inner core dot */}
-                    <div className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white/30" />
+                    <div className="relative inline-flex rounded-full h-1.5 w-1.5 bg-black/30 dark:bg-white/30" />
                   </div>
                 </div>
 

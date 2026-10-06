@@ -55,7 +55,7 @@ const Hero: FC = () => {
               <a
                 href="#journey"
                 onClick={scrollToJourney}
-                className="text-warm-200 underline decoration-white/20 hover:text-emerald-400 hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200 font-normal"
+                className="text-warm-200 underline decoration-black/20 dark:decoration-white/20 hover:text-emerald-400 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200 font-normal"
               >
                 computer science from first principles
               </a>
@@ -72,19 +72,19 @@ const Hero: FC = () => {
               <Button
                 type="button"
                 variant="outline"
-                className="group w-[106px] rounded-full py-1 h-8 text-xs font-mono font-medium tracking-wide border border-white/15 bg-white/[0.03] text-warm-100 hover:bg-warm-100 hover:text-black hover:border-warm-100 transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
+                className="group w-[106px] rounded-full py-1 h-8 text-xs font-mono font-medium tracking-wide border border-black/10 dark:border-white/15 bg-black/[0.03] dark:bg-white/[0.03] text-warm-100 hover:bg-warm-100 dark:hover:bg-white hover:text-warm-950 dark:hover:text-black hover:border-warm-100 dark:hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
                 onClick={() => setIsResumeModalOpen(true)}
               >
-                <FileText size={12} className="mr-1 text-warm-200 group-hover:text-black transition-colors duration-200" />
+                <FileText size={12} className="mr-1 text-warm-200 group-hover:text-warm-950 dark:group-hover:text-black transition-colors duration-200" />
                 Resume
               </Button>
               <Button
                 type="button"
                 variant="outline"
-                className="group w-[102px] rounded-full py-1 h-8 text-xs font-mono font-medium tracking-wide border border-white/15 bg-white/[0.03] text-warm-100 hover:bg-warm-100 hover:text-black hover:border-warm-100 transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
+                className="group w-[102px] rounded-full py-1 h-8 text-xs font-mono font-medium tracking-wide border border-black/10 dark:border-white/15 bg-black/[0.03] dark:bg-white/[0.03] text-warm-100 hover:bg-warm-100 dark:hover:bg-white hover:text-warm-950 dark:hover:text-black hover:border-warm-100 dark:hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
                 onClick={scrollToContact}
               >
-                <Mail size={12} className="mr-1 text-warm-200 group-hover:text-black transition-colors duration-200" />
+                <Mail size={12} className="mr-1 text-warm-200 group-hover:text-warm-950 dark:group-hover:text-black transition-colors duration-200" />
                 Contact
               </Button>
             </motion.div>

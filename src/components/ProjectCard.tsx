@@ -48,8 +48,8 @@ type ProjectCategoryTone = {
 };
 
 const UNIFIED_PROJECT_TONE: ProjectCategoryTone = {
-  titleHover: "group-hover:text-white",
-  cardHover: "hover:border-white/15 hover:bg-white/[0.03] transition-colors duration-200",
+  titleHover: "group-hover:text-warm-50",
+  cardHover: "hover:border-black/20 dark:hover:border-white/15 hover:bg-black/[0.02] dark:hover:bg-white/[0.03] transition-colors duration-200",
   actionButton: "",
 };
 
@@ -64,11 +64,10 @@ const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
 const DEFAULT_TONE: ProjectCategoryTone = UNIFIED_PROJECT_TONE;
 
 const actionButtonClassName =
-  "relative inline-flex h-6 w-6 sm:h-6.5 sm:w-6.5 shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/[0.03] text-warm-100 hover:bg-warm-100 hover:text-black hover:border-warm-100 transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] active:scale-95";
+  "relative inline-flex h-6 w-6 sm:h-6.5 sm:w-6.5 shrink-0 items-center justify-center rounded-lg border border-black/10 dark:border-white/15 bg-black/[0.03] dark:bg-white/[0.03] text-warm-100 hover:bg-warm-100 dark:hover:bg-white hover:text-warm-950 dark:hover:text-black hover:border-warm-100 dark:hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] active:scale-95";
 
 export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
-  const isStudent = project.id === "6" || project.title === "Student Management System";
 
   const [showInfo, setShowInfo] = useState(false);
   const [copiedType, setCopiedType] = useState<"username" | "password" | null>(null);
@@ -169,10 +168,10 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
   return (
     <div
       className={cn(
-        "group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-[#131211] shadow-lg transition-all duration-200 ease-out",
+        "group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-warm-900 shadow-[0_1px_3px_rgba(0,0,0,0.05)] dark:shadow-lg transition-all duration-200 ease-out",
         isFocused
-          ? "border-white/30 shadow-[0_16px_40px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.1)]"
-          : "border-white/10 hover:border-white/30 hover:shadow-[0_16px_40px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.09)]"
+          ? "border-black/25 dark:border-white/30 shadow-md dark:shadow-[0_16px_40px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.1)]"
+          : "border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/30 hover:shadow-md dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.09)]"
       )}
     >
       {/* Tech Info Overlay */}
@@ -183,12 +182,12 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute -inset-[1px] z-30 flex flex-col bg-[#131211] border border-white/15 p-4 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden"
+            className="absolute -inset-[1px] z-30 flex flex-col bg-warm-900 border border-black/15 dark:border-white/15 p-4 text-warm-100 info-overlay rounded-2xl shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Overlay Header & Close Button (Sticky at Top - Connected Edge to Edge) */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-2.5 -mx-4 px-4 shrink-0">
-              <span className="text-[14px] sm:text-[15px] font-bold text-warm-100 tracking-tight truncate">
+            <div className="flex items-center justify-between border-b border-black/10 dark:border-white/10 pb-2.5 -mx-4 px-4 shrink-0">
+              <span className="text-[15px] sm:text-[16px] font-bold text-warm-100 tracking-tight truncate">
                 {project.title}
               </span>
               <button
@@ -197,7 +196,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                   e.stopPropagation();
                   setShowInfo(false);
                 }}
-                className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-white/15 bg-white/[0.04] text-warm-300 hover:border-white hover:bg-white hover:text-black transition-all duration-150 active:scale-95"
+                className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-black/15 dark:border-white/15 bg-black/[0.04] dark:bg-white/[0.04] text-warm-300 hover:border-warm-100 dark:hover:border-white hover:bg-warm-100 dark:hover:bg-white hover:text-warm-950 dark:hover:text-black transition-all duration-150 active:scale-95"
                 aria-label="Close information overlay"
                 style={{ WebkitTapHighlightColor: "transparent" }}
               >
@@ -227,7 +226,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                     <span className="font-semibold">Demo Credentials</span>
                   </div>
 
-                  <div className="rounded-xl border border-white/10 bg-[#1c1b1a] px-2.5 py-1.5 space-y-1.5">
+                  <div className="rounded-xl border border-black/10 dark:border-white/10 bg-warm-800 px-2.5 py-1.5 space-y-1.5">
                     {/* User Row */}
                     <div className="flex items-center justify-between text-[10px] sm:text-[10.5px] font-mono">
                       <span className="text-warm-400">
@@ -242,7 +241,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                           "inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] sm:text-[9.5px] font-mono transition-all duration-150 border shrink-0",
                           copiedType === "username"
                             ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 font-medium"
-                            : "border-white/10 bg-white/[0.04] text-warm-300 hover:text-white hover:border-white/20"
+                            : "border-black/10 dark:border-white/10 bg-black/[0.04] dark:bg-white/[0.04] text-warm-300 hover:text-warm-100 hover:border-black/20 dark:hover:border-white/20"
                         )}
                         aria-label="Copy username"
                         style={{ WebkitTapHighlightColor: "transparent" }}
@@ -261,7 +260,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                       </button>
                     </div>
 
-                    <div className="border-t border-white/[0.06]" />
+                    <div className="border-t border-black/[0.06] dark:border-white/[0.06]" />
 
                     {/* Pass Row */}
                     <div className="flex items-center justify-between text-[10px] sm:text-[10.5px] font-mono">
@@ -277,7 +276,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                           "inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] sm:text-[9.5px] font-mono transition-all duration-150 border shrink-0",
                           copiedType === "password"
                             ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 font-medium"
-                            : "border-white/10 bg-white/[0.04] text-warm-300 hover:text-white hover:border-white/20"
+                            : "border-black/10 dark:border-white/10 bg-black/[0.04] dark:bg-white/[0.04] text-warm-300 hover:text-warm-100 hover:border-black/20 dark:hover:border-white/20"
                         )}
                         aria-label="Copy password"
                         style={{ WebkitTapHighlightColor: "transparent" }}
@@ -304,14 +303,14 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
       </AnimatePresence>
 
       {/* Image Wrapper */}
-      <div className="relative w-full aspect-video overflow-hidden rounded-t-2xl border-b border-white/[0.08] bg-[#1c1b1a]">
+      <div className="relative w-full aspect-video overflow-hidden rounded-t-2xl border-b border-black/[0.08] dark:border-white/[0.08] bg-warm-800">
         <img
           src={project.image}
           alt={project.title}
           className={cn(
             "w-full h-full transition-transform duration-400 ease-out",
             isFocused ? "scale-[1.02]" : "group-hover:scale-[1.02]",
-            isStudent ? "object-contain px-6 sm:px-7 py-2.5 sm:py-3 bg-[#181818]" : "object-cover object-top"
+            "object-cover object-top"
           )}
           loading="lazy"
         />
@@ -322,7 +321,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
         <h3
           className={cn(
             "text-[17.5px] sm:text-[19px] font-bold tracking-tight transition-colors duration-250 leading-snug mb-1",
-            isFocused ? "text-white" : cn("text-warm-100", tone.titleHover)
+            isFocused ? "text-warm-100" : cn("text-warm-100", tone.titleHover)
           )}
         >
           {project.title}
@@ -344,7 +343,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                 aria-label={`Why I built ${project.title}`}
                 style={{ WebkitTapHighlightColor: "transparent" }}
               >
-                <BookOpen className="relative z-10 h-3 w-3 text-warm-200 group-hover/btn:text-black transition-colors duration-200" strokeWidth={1.85} />
+                <BookOpen className="relative z-10 h-3 w-3 text-warm-200 group-hover/btn:text-warm-950 dark:group-hover/btn:text-black transition-colors duration-200" strokeWidth={1.85} />
               </button>
 
               {/* Tooltip */}
@@ -352,7 +351,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                 role="tooltip"
                 className="pointer-events-none absolute bottom-full left-0 mb-2 -translate-y-1 opacity-0 transition-all duration-150 ease-out group-hover/tooltip:opacity-100 group-hover/tooltip:translate-y-0 group-focus-within/tooltip:opacity-100 group-focus-within/tooltip:translate-y-0 z-20"
               >
-                <div className="whitespace-nowrap rounded-md border border-white/10 bg-[#1c1b1a] px-2 py-0.75 text-[11px] font-sans font-medium text-warm-200 shadow-xl">
+                <div className="whitespace-nowrap rounded-md border border-black/10 dark:border-white/10 bg-warm-800 px-2 py-0.75 text-[11px] font-sans font-medium text-warm-200 shadow-xl">
                   Why I built this
                 </div>
               </div>
@@ -372,7 +371,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                   >
                     <Icon
                       className={cn(
-                        "relative z-10 text-warm-200 group-hover/btn:text-black transition-colors duration-200",
+                        "relative z-10 text-warm-200 group-hover/btn:text-warm-950 dark:group-hover/btn:text-black transition-colors duration-200",
                         key === "github" ? "h-[13px] w-[13px] translate-x-[0.5px]" : "h-3.5 w-3.5",
                         iconClassName
                       )}
@@ -385,7 +384,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                     role="tooltip"
                     className="pointer-events-none absolute bottom-full right-0 mb-2 -translate-y-1 opacity-0 transition-all duration-150 ease-out group-hover/tooltip:opacity-100 group-hover/tooltip:translate-y-0 group-focus-within/tooltip:opacity-100 group-focus-within/tooltip:translate-y-0 z-20"
                   >
-                    <div className="whitespace-nowrap rounded-md border border-white/10 bg-[#1c1b1a] px-2 py-0.75 text-[11px] font-sans font-medium text-warm-200 shadow-xl">
+                    <div className="whitespace-nowrap rounded-md border border-black/10 dark:border-white/10 bg-warm-800 px-2 py-0.75 text-[11px] font-sans font-medium text-warm-200 shadow-xl">
                       {tooltip}
                     </div>
                   </div>

@@ -48,20 +48,36 @@ const AboutSection: FC = () => {
               <MapPin size={13} className="text-emerald-400 shrink-0" />
               <span>Kolkata, India</span>
             </div>
-            <div
-              className="flex items-center gap-1.5"
-              title={
-                timeInfo
-                  ? timeInfo.offset === "same time"
-                    ? "Local time in Kolkata (same as your timezone)"
-                    : `Local time in Kolkata (${timeInfo.offset} your timezone)`
-                  : "Local time in Kolkata (IST)"
-              }
-            >
-              <Clock size={13} className="text-emerald-400 shrink-0" />
-              <span>
-                {timeInfo ? `${timeInfo.time} (${timeInfo.offset})` : "IST"}
-              </span>
+            <div className="relative group/time-tooltip flex items-center">
+              <div
+                className="flex items-center gap-1.5 cursor-default transition-colors duration-200 group-hover/time-tooltip:text-warm-300"
+                aria-label={
+                  timeInfo
+                    ? timeInfo.offset === "same time"
+                      ? "Same as your timezone (IST)"
+                      : `${timeInfo.offset} of your timezone (IST)`
+                    : "Indian Standard Time (UTC+5:30)"
+                }
+              >
+                <Clock size={13} className="text-emerald-400 shrink-0" />
+                <span>
+                  {timeInfo ? `${timeInfo.time} (${timeInfo.offset})` : "IST"}
+                </span>
+              </div>
+
+              {/* Floating Tooltip */}
+              <div
+                role="tooltip"
+                className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 translate-y-1 opacity-0 transition-all duration-200 ease-out group-hover/time-tooltip:opacity-100 group-hover/time-tooltip:translate-y-0 z-50"
+              >
+                <div className="whitespace-nowrap rounded-lg border border-black/10 dark:border-white/10 bg-warm-900/95 dark:bg-warm-850/95 backdrop-blur-md px-2.5 py-1 text-[11px] font-sans font-medium text-warm-200 shadow-xl">
+                  {timeInfo
+                    ? timeInfo.offset === "same time"
+                      ? "Same as your timezone"
+                      : `${timeInfo.offset} of your timezone`
+                    : "UTC+5:30"}
+                </div>
+              </div>
             </div>
             <div className="flex items-center gap-1.5">
               <User size={13} className="text-emerald-400 shrink-0" />

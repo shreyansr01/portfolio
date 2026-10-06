@@ -61,7 +61,7 @@ const FOOTER_LINKS = [
 
 const Footer: FC = () => {
   return (
-    <footer id="contact" className="relative z-10 pt-10 sm:pt-14 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden border-t border-white/[0.05]">
+    <footer id="contact" className="relative z-10 pt-10 sm:pt-14 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden border-t border-black/[0.06] dark:border-white/[0.05]">
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center justify-center">
         <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-warm-100 mb-2.5 sm:mb-3 tracking-tight text-center leading-tight">
           Let&apos;s build something dependable<span className="text-emerald-500">.</span>
@@ -74,9 +74,9 @@ const Footer: FC = () => {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-1.5 sm:gap-1.75 px-3 py-1.5 sm:px-3.5 sm:py-1.25 rounded-full border border-white/10 bg-white/[0.03] text-warm-300 hover:bg-white hover:text-black hover:border-white transition-all duration-200 text-[11.5px] sm:text-xs font-mono font-medium tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]"
+              className="group inline-flex items-center justify-center gap-1.5 sm:gap-1.75 px-3 py-1.5 sm:px-3.5 sm:py-1.25 rounded-full border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.03] text-warm-300 hover:bg-warm-100 dark:hover:bg-white hover:text-warm-950 dark:hover:text-black hover:border-warm-100 dark:hover:border-white transition-all duration-200 text-[11.5px] sm:text-xs font-mono font-medium tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]"
             >
-              <link.icon className="w-3.5 h-3.5 shrink-0 text-warm-500 group-hover:text-black transition-colors duration-200" />
+              <link.icon className="w-3.5 h-3.5 shrink-0 text-warm-500 group-hover:text-warm-950 dark:group-hover:text-black transition-colors duration-200" />
               <span>{link.name}</span>
             </a>
           ))}

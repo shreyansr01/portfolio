@@ -75,7 +75,6 @@ export const techCategories: TechCategory[] = [
       { name: "Firebase", icon: SiFirebase },
       { name: "Vercel", icon: SiVercel },
       { name: "Antigravity", iconSrc: "/antigravity-icon.svg" },
-      { name: "Cursor", iconSrc: "/cursor-icon.svg" },
     ],
   },
   {
@@ -99,15 +98,15 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "2025 - 2026",
-    description: "Expanded from Java (<a href=\"#project-springmart\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a>) to Python & FastAPI (<a href=\"#project-crate\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Crate</a>). Studied system design & DevOps fundamentals. Used AI agents to ship 8 apps (6 deployed)."
+    description: "Expanded from Java (<a href=\"#project-springmart\" class=\"text-warm-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-black/20 dark:decoration-white/20 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a>) to Python & FastAPI (<a href=\"#project-crate\" class=\"text-warm-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-black/20 dark:decoration-white/20 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 font-normal\">Crate</a>). Studied system design & DevOps fundamentals. Used AI agents to ship 8 apps (6 deployed)."
   },
   {
     period: "2024 - 2025",
-    description: "Built <a href=\"#project-wrkout\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a> to track progressive overload—used it daily to lose 30 kg (66 lbs) in 1 year."
+    description: "Built <a href=\"#project-wrkout\" class=\"text-warm-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-black/20 dark:decoration-white/20 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a> to track progressive overload—used it daily to lose 30 kg (66 lbs) in 1 year."
   },
   {
     period: "2021 - 2024",
-    description: "Graduated with a B.Tech in CSE (8.3 CGPA). Applied the 80/20 principle to cut exam study time by over 50%, completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a>, and solved 130+ LeetCode problems."
+    description: "Graduated with a B.Tech in CSE (8.3 CGPA). Applied the 80/20 principle to cut exam study time by over 50%, completed the <a href=\"#certificate-alpha\" class=\"text-warm-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-black/20 dark:decoration-white/20 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a>, and solved 130+ LeetCode problems."
   }
 ];
 
