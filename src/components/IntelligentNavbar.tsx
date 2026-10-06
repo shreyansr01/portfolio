@@ -3,7 +3,6 @@ import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "@/lib/theme";
-import VintageGlobeLogo from "@/components/VintageGlobeLogo";
 
 const NAV_LINKS = [
   { label: "About", to: "#about" },
@@ -62,7 +61,7 @@ export default function IntelligentNavbar() {
 
   return (
     <>
-      <div className="fixed z-50 top-4 left-0 right-0 flex justify-center w-full pointer-events-none">
+      <div className="fixed z-50 top-4 left-0 right-0 flex justify-center w-full pointer-events-none px-4">
         {/* Desktop: always-visible slim pill */}
         <motion.nav
           initial={{ y: -30, opacity: 0 }}
@@ -77,29 +76,6 @@ export default function IntelligentNavbar() {
           )}
           role="navigation"
         >
-          {/* Logo with punchy tooltip */}
-          <div className="relative group/tooltip flex items-center">
-            <a
-              href="/"
-              className="group flex items-center justify-center w-8 h-8 rounded-full text-warm-100 hover:text-warm-50 hover:bg-black/[0.05] dark:hover:bg-white/[0.06] transition-all duration-200"
-              aria-label="Curious about the universe"
-            >
-              <VintageGlobeLogo size={17} className="transition-transform duration-300 group-hover:rotate-12 group-hover:scale-105" />
-            </a>
-
-            {/* Floating tooltip */}
-            <div
-              role="tooltip"
-              className="pointer-events-none absolute top-full left-0 mt-2.5 translate-y-1 opacity-0 transition-all duration-200 ease-out group-hover/tooltip:opacity-100 group-hover/tooltip:translate-y-0 z-50"
-            >
-              <div className="whitespace-nowrap rounded-lg border border-black/10 dark:border-white/10 bg-warm-900/95 dark:bg-warm-850/95 backdrop-blur-md px-2.5 py-1 text-[11px] font-sans font-medium text-warm-200 shadow-xl">
-                Curious about the universe
-              </div>
-            </div>
-          </div>
-
-          <div className="w-[1px] h-3.5 bg-black/10 dark:bg-white/10 mx-0.5 shrink-0" />
-
           {NAV_LINKS.map((nav) => (
             <a
               key={nav.label}
@@ -150,16 +126,34 @@ export default function IntelligentNavbar() {
 
         {/* Mobile: Expanding pill */}
         <nav
-          className="flex md:hidden flex-col w-full max-w-[280px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-[#F7F5F0]/90 dark:bg-[#151413]/85 border border-black/10 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)] overflow-hidden rounded-2xl"
+          className={clsx(
+            "flex md:hidden flex-col w-full max-w-[280px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%]",
+            "border border-black/10 dark:border-white/10 overflow-hidden transition-all duration-300 ease-out",
+            openMobile
+              ? "rounded-2xl bg-[#F7F5F0]/95 dark:bg-[#151413]/90 shadow-[0_8px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.8)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.08)]"
+              : clsx(
+                  "rounded-full",
+                  scrolled
+                    ? "bg-[#F7F5F0]/85 dark:bg-[#151413]/80 shadow-[0_8px_30px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)]"
+                    : "bg-[#F7F5F0]/70 dark:bg-[#151413]/60 shadow-[0_4px_20px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.5)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.04)]"
+                )
+          )}
         >
-          <div className="flex items-center justify-between w-full px-2.5 py-1.5">
+          <div
+            className={clsx(
+              "flex items-center justify-between w-full transition-all duration-200",
+              openMobile ? "px-3.5 py-2" : "pl-3.5 pr-1.5 py-1.5"
+            )}
+          >
             <a
               href="/"
-              aria-label="Curious about the universe"
-              title="Curious about the universe"
-              className="group flex items-center p-1 rounded-full text-warm-100 hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="py-1 text-xs font-mono font-medium text-warm-100 hover:text-warm-50 transition-colors"
             >
-              <VintageGlobeLogo size={16} className="transition-transform duration-300 group-hover:rotate-12" />
+              Shreyan
             </a>
             <div className="flex items-center gap-1">
               <button
