@@ -42,15 +42,19 @@ const AboutSection: FC = () => {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="w-full max-w-xl sm:max-w-2xl mx-auto"
         >
-          {/* Metadata Bar */}
-          <div className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-5 gap-y-2 text-[11.5px] sm:text-xs text-warm-500 font-mono font-normal mb-3 sm:mb-3.5">
-            <div className="flex items-center gap-1.5">
-              <MapPin size={13} className="text-emerald-400 shrink-0" />
-              <span>Kolkata, India</span>
+          {/* Metadata Row */}
+          <div className="flex items-center justify-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs text-warm-500 font-mono font-normal mb-3 sm:mb-3.5 select-none">
+            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+              <MapPin size={12} className="text-emerald-400 shrink-0" />
+              <span className="sm:hidden">India</span>
+              <span className="hidden sm:inline">Kolkata, India</span>
             </div>
-            <div className="relative group/time-tooltip flex items-center">
+
+            <span className="text-warm-700/60 dark:text-warm-600/40">•</span>
+
+            <div className="relative group/time-tooltip flex items-center shrink-0">
               <div
-                className="flex items-center gap-1.5 cursor-default transition-colors duration-200 group-hover/time-tooltip:text-warm-300"
+                className="flex items-center gap-1 sm:gap-1.5 cursor-default transition-colors duration-200 group-hover/time-tooltip:text-warm-300"
                 aria-label={
                   timeInfo
                     ? timeInfo.offset === "same time"
@@ -59,9 +63,9 @@ const AboutSection: FC = () => {
                     : "Indian Standard Time (UTC+5:30)"
                 }
               >
-                <Clock size={13} className="text-emerald-400 shrink-0" />
+                <Clock size={12} className="text-emerald-400 shrink-0" />
                 <span>
-                  {timeInfo ? `${timeInfo.time} (${timeInfo.offset})` : "IST"}
+                  {timeInfo ? `${timeInfo.time} IST` : "IST"}
                 </span>
               </div>
 
@@ -79,8 +83,11 @@ const AboutSection: FC = () => {
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-1.5">
-              <User size={13} className="text-emerald-400 shrink-0" />
+
+            <span className="text-warm-700/60 dark:text-warm-600/40">•</span>
+
+            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+              <User size={12} className="text-emerald-400 shrink-0" />
               <span>23 y/o</span>
             </div>
           </div>

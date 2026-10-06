@@ -83,13 +83,24 @@ const Footer: FC = () => {
         </div>
 
         {/* Handwritten Signature */}
-        <div className="flex flex-col items-center justify-center gap-1 mt-7 sm:mt-8 select-none">
+        <div className="flex flex-col items-center justify-center gap-1.5 mt-7 sm:mt-8 select-none">
           <span className="font-signature text-2xl sm:text-3xl text-warm-200 tracking-wide hover:text-warm-100 transition-colors duration-200">
             Shreyan Sardar
           </span>
-          <span className="text-[10px] font-mono text-warm-600 tracking-widest uppercase">
-            {new Date().getFullYear()}
-          </span>
+          <div className="flex items-center gap-2.5 text-[10px] font-mono text-warm-600 tracking-wider">
+            <span className="uppercase">{new Date().getFullYear()}</span>
+            <span className="text-warm-700/60">•</span>
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="group inline-flex items-center gap-1 text-warm-500 hover:text-warm-200 transition-colors cursor-pointer"
+            >
+              <span>Back to top</span>
+              <span className="transition-transform duration-200 group-hover:-translate-y-0.5 text-warm-400 group-hover:text-warm-100">
+                ↑
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </footer>
