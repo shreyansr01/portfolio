@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
@@ -16,6 +16,7 @@ export default function IntelligentNavbar() {
   const [active, setActive] = useState("");
   const [openMobile, setOpenMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const mobileNavRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,6 +46,17 @@ export default function IntelligentNavbar() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!openMobile) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (mobileNavRef.current && !mobileNavRef.current.contains(e.target as Node)) {
+        setOpenMobile(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [openMobile]);
 
   const handleNavClick = (e: React.MouseEvent, to: string) => {
     e.preventDefault();
@@ -126,99 +138,92 @@ export default function IntelligentNavbar() {
 
         {/* Mobile: Expanding pill */}
         <nav
+          ref={mobileNavRef}
           className={clsx(
-            "flex md:hidden flex-col w-full max-w-[280px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%]",
-            "border border-black/10 dark:border-white/10 overflow-hidden transition-all duration-300 ease-out",
-            openMobile
-              ? "rounded-2xl bg-[#F7F5F0]/95 dark:bg-[#151413]/90 shadow-[0_8px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.8)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.08)]"
-              : clsx(
-                  "rounded-full",
-                  scrolled
-                    ? "bg-[#F7F5F0]/85 dark:bg-[#151413]/80 shadow-[0_8px_30px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)]"
-                    : "bg-[#F7F5F0]/70 dark:bg-[#151413]/60 shadow-[0_4px_20px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.5)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.04)]"
-                )
+            "flex md:hidden flex-col w-full max-w-[240px] pointer-events-auto rounded-[26px] overflow-hidden",
+            "backdrop-blur-3xl border border-black/10 dark:border-white/10 backdrop-saturate-[180%] transition-colors duration-500",
+            scrolled
+              ? "bg-[#F7F5F0]/85 dark:bg-[#151413]/80 shadow-[0_8px_30px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)]"
+              : "bg-[#F7F5F0]/70 dark:bg-[#151413]/60 shadow-[0_4px_20px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.5)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.04)]"
           )}
         >
-          <div
-            className={clsx(
-              "flex items-center justify-between w-full transition-all duration-200",
-              openMobile ? "px-3.5 py-2" : "pl-3.5 pr-1.5 py-1.5"
-            )}
+          <button
+            type="button"
+            onClick={() => setOpenMobile((v) => !v)}
+            className="flex items-center justify-between w-full px-3.5 py-2 text-xs font-mono font-medium text-warm-200 hover:text-warm-100 transition-colors focus:outline-none"
+            aria-label={openMobile ? "Close menu" : "Open menu"}
           >
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="py-1 text-xs font-mono font-medium text-warm-100 hover:text-warm-50 transition-colors"
-            >
-              Shreyan
-            </a>
-            <div className="flex items-center gap-1">
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className="rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center w-7 h-7 text-warm-400 hover:text-warm-100 focus:outline-none"
-                aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-              >
-                {theme === "light" ? <Moon size={14} /> : <Sun size={14} />}
-              </button>
-              <button
-                type="button"
-                className="rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center w-7 h-7 focus:outline-none"
-                onClick={() => setOpenMobile((v) => !v)}
-                aria-label={openMobile ? "Close menu" : "Open menu"}
-              >
-                <div className="relative w-3.5 h-3 flex items-center justify-center">
-                  <motion.span
-                    animate={openMobile ? { rotate: 45, y: 0 } : { rotate: 0, y: -4 }}
-                    transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-                    className="absolute w-full h-[1.5px] bg-warm-100 rounded-full origin-center"
-                  />
-                  <motion.span
-                    animate={openMobile ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-                    transition={{ duration: 0.15, ease: "easeOut" }}
-                    className="absolute w-full h-[1.5px] bg-warm-100 rounded-full"
-                  />
-                  <motion.span
-                    animate={openMobile ? { rotate: -45, y: 0 } : { rotate: 0, y: 4 }}
-                    transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-                    className="absolute w-full h-[1.5px] bg-warm-100 rounded-full origin-center"
-                  />
-                </div>
-              </button>
+            <span>{openMobile ? "Close" : "Menu"}</span>
+            <div className="w-7 h-7 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center">
+              <div className="relative w-3.5 h-3 flex items-center justify-center">
+                <motion.span
+                  animate={openMobile ? { rotate: 45, y: 0 } : { rotate: 0, y: -4 }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute w-full h-[1.5px] bg-warm-100 rounded-full origin-center"
+                />
+                <motion.span
+                  animate={openMobile ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+                  transition={{ duration: 0.15, ease: "easeOut" }}
+                  className="absolute w-full h-[1.5px] bg-warm-100 rounded-full"
+                />
+                <motion.span
+                  animate={openMobile ? { rotate: -45, y: 0 } : { rotate: 0, y: 4 }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute w-full h-[1.5px] bg-warm-100 rounded-full origin-center"
+                />
+              </div>
             </div>
-          </div>
+          </button>
 
-          <AnimatePresence>
+          <AnimatePresence initial={false}>
             {openMobile && (
               <motion.div
+                key="mobile-nav-menu"
                 initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
+                animate={{
+                  opacity: 1,
+                  height: "auto",
+                  transition: {
+                    height: { duration: 0.28, ease: [0.16, 1, 0.3, 1] },
+                    opacity: { duration: 0.2, ease: "easeOut" },
+                  },
+                }}
+                exit={{
+                  opacity: 0,
+                  height: 0,
+                  transition: {
+                    height: { duration: 0.22, ease: [0.16, 1, 0.3, 1] },
+                    opacity: { duration: 0.15, ease: "easeIn" },
+                  },
+                }}
                 className="overflow-hidden w-full"
               >
-                <div className="w-full border-t border-black/[0.08] dark:border-white/[0.08] px-2.5 pt-1.5 pb-1.5">
+                <motion.div
+                  initial={{ y: -12, opacity: 0 }}
+                  animate={{
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: 0.02 },
+                  }}
+                  exit={{
+                    y: -10,
+                    opacity: 0,
+                    transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] },
+                  }}
+                  className="w-full border-t border-black/[0.08] dark:border-white/[0.08] px-2 pt-1.5 pb-1.5"
+                >
                   <ul className="flex flex-col gap-0.5">
                     {NAV_LINKS.map((nav, i) => {
                       const isActive = active === nav.label;
                       const indexStr = String(i + 1).padStart(2, "0");
 
                       return (
-                        <motion.li
-                          key={nav.label}
-                          initial={{ opacity: 0, x: -6 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -6 }}
-                          transition={{ delay: i * 0.03, duration: 0.18 }}
-                        >
+                        <li key={nav.label}>
                           <a
                             href={nav.to}
                             onClick={(e) => handleNavClick(e, nav.to)}
                             className={clsx(
-                              "flex items-center justify-between px-3 py-2 rounded-xl text-xs font-mono tracking-normal font-medium transition-all duration-150 active:scale-[0.98]",
+                              "flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-mono tracking-normal font-medium transition-colors duration-150 active:scale-[0.98]",
                               isActive
                                 ? "text-warm-100 bg-black/5 dark:bg-white/10 font-semibold"
                                 : "text-warm-400 hover:text-warm-100 hover:bg-black/5 dark:hover:bg-white/5"
@@ -236,11 +241,26 @@ export default function IntelligentNavbar() {
                               {indexStr}
                             </span>
                           </a>
-                        </motion.li>
+                        </li>
                       );
                     })}
                   </ul>
-                </div>
+
+                  <div className="border-t border-black/[0.08] dark:border-white/[0.08] my-1" />
+
+                  <button
+                    type="button"
+                    onClick={toggleTheme}
+                    className="flex items-center justify-between w-full px-3 py-1.5 rounded-xl text-xs font-mono font-medium text-warm-400 hover:text-warm-100 hover:bg-black/5 dark:hover:bg-white/5 transition-colors active:scale-[0.98]"
+                    aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+                  >
+                    <span>Theme</span>
+                    <span className="flex items-center gap-1.5 text-warm-300 dark:text-warm-200">
+                      {theme === "light" ? <Moon size={13} /> : <Sun size={13} />}
+                      <span className="text-[11px] font-mono">{theme === "light" ? "Dark" : "Light"}</span>
+                    </span>
+                  </button>
+                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>
