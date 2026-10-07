@@ -12,12 +12,12 @@
 
 ## Features
 
-- **Project Showcase & Deep Dives:** Cards with project previews, live demo links, GitHub repositories, and expandable architecture breakdowns.
-- **Interactive Journey Timeline:** Chronological timeline mapping education and engineering growth, with clickable links that scroll and highlight referenced projects.
-- **Categorized Skills Matrix:** Structured grid grouping Backend, Data & Infra, Tools, and Core CS Foundations with brand icons.
-- **In-App Resume Viewer:** Dedicated PDF viewer modal for viewing and downloading the resume without leaving the site.
-- **Smart Navbar & Local Clock:** Sticky navigation bar with active section scroll-spy, alongside a live Kolkata (IST) clock and timezone offset.
-- **Theme Toggle:** Dark and warm light mode with instant local storage persistence.
+- **Project Deep Dives:** Interactive cards with live demos, repos, and expandable architecture breakdowns.
+- **Connected Journey Timeline:** Chronological milestones with direct links that scroll and spotlight featured projects.
+- **Categorized Skills Grid:** Curated stack covering Backend, Data & Infra, Tools, and CS foundations.
+- **In-App Resume Viewer:** Dedicated PDF modal to preview and download resume credentials on-page.
+- **Intelligent Navbar & Clock:** Scroll-aware navigation bar paired with a live Kolkata (IST) time display.
+- **Dynamic Theme Engine:** Dark and warm light modes with instant local storage persistence.
 
 ---
 
