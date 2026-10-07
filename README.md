@@ -12,11 +12,12 @@
 
 ## Features
 
-- **Project Showcase:** Cards with architecture breakdowns, technical highlights, live demos, and repository links.
-- **Milestone Timeline:** Interactive tracker for education, certifications, and milestones.
-- **Skills Matrix:** Categorized display of core languages, backend frameworks, databases, and tooling.
-- **In-App Document Viewer:** Embedded PDF viewer modal for resume and certifications.
-- **Dynamic Theme & Local Time:** Light/dark mode toggle with live IST time display.
+- **Project Showcase & Deep Dives:** Cards with project previews, live demo links, GitHub repositories, and expandable architecture breakdowns.
+- **Interactive Journey Timeline:** Chronological timeline mapping education and engineering growth, with clickable links that scroll and highlight referenced projects.
+- **Categorized Skills Matrix:** Structured grid grouping Backend, Data & Infra, Tools, and Core CS Foundations with brand icons.
+- **In-App Resume Viewer:** Dedicated PDF viewer modal for viewing and downloading the resume without leaving the site.
+- **Smart Navbar & Local Clock:** Sticky navigation bar with active section scroll-spy, alongside a live Kolkata (IST) clock and timezone offset.
+- **Theme Toggle:** Dark and warm light mode with instant local storage persistence.
 
 ---
 
