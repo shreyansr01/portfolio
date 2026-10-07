@@ -12,18 +12,17 @@
 
 ## Features
 
-- **Interactive Terminal:** In-browser CLI to explore bio, projects, and shortcuts.
-- **Project Showcase:** Cards with architecture breakdowns, live demos, test logins, and repository links.
-- **Milestone Timeline:** Interactive tracker for education, releases, and milestones.
-- **GitHub Activity Graph:** Real-time commit history fetched via serverless edge functions.
-- **In-App Document Viewer:** Embedded PDF viewer for resume and certifications.
+- **Project Showcase:** Cards with architecture breakdowns, technical highlights, live demos, and repository links.
+- **Milestone Timeline:** Interactive tracker for education, certifications, and milestones.
+- **Skills Matrix:** Categorized display of core languages, backend frameworks, databases, and tooling.
+- **In-App Document Viewer:** Embedded PDF viewer modal for resume and certifications.
+- **Dynamic Theme & Local Time:** Light/dark mode toggle with live IST time display.
 
 ---
 
 ## Tech Stack
 
 - **Frontend:** React 18, TypeScript, Vite, Tailwind CSS, Framer Motion
-- **Backend & Serverless:** Vercel Edge Functions
 - **Hosting:** Vercel
 
 ---
