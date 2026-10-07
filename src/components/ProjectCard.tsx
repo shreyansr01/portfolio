@@ -1,5 +1,5 @@
 import { memo, type FC, useState, useEffect, useRef } from "react";
-import { ArrowUpRight, Github, BookOpen, X, Copy, Check, KeyRound } from "lucide-react";
+import { ArrowUpRight, Github, BookOpen, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -7,11 +7,6 @@ export type ProjectTechDetails = {
   scope?: string;
   architecture?: string;
   highlights?: string[];
-  credentials?: {
-    notice?: string;
-    username: string;
-    password?: string;
-  };
 };
 
 export type Project = {
@@ -70,7 +65,6 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
 
   const [showInfo, setShowInfo] = useState(false);
-  const [copiedType, setCopiedType] = useState<"username" | "password" | null>(null);
   const [isFocused, setIsFocused] = useState(false);
   const focusTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -107,40 +101,6 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
       if (focusTimeoutRef.current) clearTimeout(focusTimeoutRef.current);
     };
   }, [cardDomId]);
-
-  const handleCopy = async (text: string, type: "username" | "password") => {
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
-      } else {
-        const textarea = document.createElement("textarea");
-        textarea.value = text;
-        textarea.style.position = "fixed";
-        textarea.style.left = "-999999px";
-        textarea.style.top = "-999999px";
-        document.body.appendChild(textarea);
-        textarea.focus();
-        textarea.select();
-        document.execCommand("copy");
-        textarea.remove();
-      }
-    } catch {
-      const textarea = document.createElement("textarea");
-      textarea.value = text;
-      textarea.style.position = "fixed";
-      textarea.style.left = "-999999px";
-      textarea.style.top = "-999999px";
-      document.body.appendChild(textarea);
-      textarea.focus();
-      textarea.select();
-      document.execCommand("copy");
-      textarea.remove();
-    }
-    setCopiedType(type);
-    setTimeout(() => {
-      setCopiedType(null);
-    }, 2000);
-  };
 
   const actions: ProjectAction[] = [
     project.liveUrl
@@ -218,85 +178,6 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                 </div>
               )}
 
-              {/* Demo Credentials (wrkout only) */}
-              {project.techDetails?.credentials && (
-                <div className="mt-3 space-y-1.5 shrink-0">
-                  <div className="flex items-center gap-1.5 text-[10px] sm:text-[10.5px] font-mono text-emerald-400">
-                    <KeyRound size={11} className="text-emerald-400 shrink-0" />
-                    <span className="font-semibold">Demo Credentials</span>
-                  </div>
-
-                  <div className="rounded-xl border border-black/10 dark:border-white/10 bg-warm-800 px-2.5 py-1.5 space-y-1.5">
-                    {/* User Row */}
-                    <div className="flex items-center justify-between text-[10px] sm:text-[10.5px] font-mono">
-                      <span className="text-warm-400">
-                        <span className="sm:hidden">User: </span>
-                        <span className="hidden sm:inline">Username: </span>
-                        <span className="text-warm-100 font-medium select-all">{project.techDetails.credentials.username}</span>
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => handleCopy(project.techDetails!.credentials!.username, "username")}
-                        className={cn(
-                          "inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] sm:text-[9.5px] font-mono transition-all duration-150 border shrink-0",
-                          copiedType === "username"
-                            ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 font-medium"
-                            : "border-black/10 dark:border-white/10 bg-black/[0.04] dark:bg-white/[0.04] text-warm-300 hover:text-warm-100 hover:border-black/20 dark:hover:border-white/20"
-                        )}
-                        aria-label="Copy username"
-                        style={{ WebkitTapHighlightColor: "transparent" }}
-                      >
-                        {copiedType === "username" ? (
-                          <>
-                            <Check size={9.5} className="text-emerald-400" />
-                            <span>Copied!</span>
-                          </>
-                        ) : (
-                          <>
-                            <Copy size={9.5} />
-                            <span>Copy</span>
-                          </>
-                        )}
-                      </button>
-                    </div>
-
-                    <div className="border-t border-black/[0.06] dark:border-white/[0.06]" />
-
-                    {/* Pass Row */}
-                    <div className="flex items-center justify-between text-[10px] sm:text-[10.5px] font-mono">
-                      <span className="text-warm-400">
-                        <span className="sm:hidden">Pass: </span>
-                        <span className="hidden sm:inline">Password: </span>
-                        <span className="text-warm-100 font-medium select-all">{project.techDetails.credentials.password}</span>
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => handleCopy(project.techDetails!.credentials!.password || "", "password")}
-                        className={cn(
-                          "inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] sm:text-[9.5px] font-mono transition-all duration-150 border shrink-0",
-                          copiedType === "password"
-                            ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 font-medium"
-                            : "border-black/10 dark:border-white/10 bg-black/[0.04] dark:bg-white/[0.04] text-warm-300 hover:text-warm-100 hover:border-black/20 dark:hover:border-white/20"
-                        )}
-                        aria-label="Copy password"
-                        style={{ WebkitTapHighlightColor: "transparent" }}
-                      >
-                        {copiedType === "password" ? (
-                          <>
-                            <Check size={9.5} className="text-emerald-400" />
-                            <span>Copied!</span>
-                          </>
-                        ) : (
-                          <>
-                            <Copy size={9.5} />
-                            <span>Copy</span>
-                          </>
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </motion.div>
         )}

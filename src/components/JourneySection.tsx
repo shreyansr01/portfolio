@@ -1,13 +1,11 @@
 import { memo, useRef, useState, useEffect, type FC } from "react";
 import { motion } from "framer-motion";
 import { timeline } from "@/data/experience";
-import PdfModal from "./PdfModal";
 import { cn } from "@/lib/utils";
 
 const JourneySection: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
-  const [isCertModalOpen, setIsCertModalOpen] = useState(false);
   const [isPresentFocused, setIsPresentFocused] = useState(false);
   const presentTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastNodeRef = useRef<HTMLDivElement>(null);
@@ -116,10 +114,7 @@ const JourneySection: FC = () => {
                       const anchor = (e.target as HTMLElement).closest('a');
                       if (anchor) {
                         const href = anchor.getAttribute('href');
-                        if (href === '#certificate-alpha') {
-                          e.preventDefault();
-                          setIsCertModalOpen(true);
-                        } else if (href && href.startsWith('#project-')) {
+                        if (href && href.startsWith('#project-')) {
                           const targetId = href.slice(1);
                           window.dispatchEvent(new CustomEvent('focus-project', { detail: targetId }));
                         }
@@ -155,16 +150,6 @@ const JourneySection: FC = () => {
           </div>
         </div>
       </div>
-      <PdfModal
-        isOpen={isCertModalOpen}
-        onClose={() => setIsCertModalOpen(false)}
-        title="Alpha Course Certificate"
-        pdfPath="/Alpha_Course_Certificate.pdf"
-        downloadName="Alpha_Course_Certificate.pdf"
-        downloadLabel="Download PDF"
-        defaultZoom={65}
-        newTabZoom={98}
-      />
     </section>
   );
 };

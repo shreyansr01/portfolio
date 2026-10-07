@@ -76,12 +76,7 @@
         "Fast set logging with inline steppers, one-tap saving, and audio/haptic feedback",
         "Progressive overload tracking with automatic volume calculations and workout comparisons",
         "Supabase Auth and PostgreSQL with Row Level Security (RLS)"
-      ],
-      "credentials": {
-        "notice": "Hosted on Vercel. Use the demo credentials below or register for free.",
-        "username": "demo",
-        "password": "TestPassword123"
-      }
+      ]
     }
   },
   {

@@ -105,8 +105,8 @@ export const timeline: TimelineEntry[] = [
     description: "Built <a href=\"#project-wrkout\" class=\"text-warm-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-black/20 dark:decoration-white/20 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a> to track progressive overload—used it daily to lose 30 kg (66 lbs) in 1 year."
   },
   {
-    period: "2021 - 2024",
-    description: "Graduated with a B.Tech in CSE (8.3 CGPA). Applied the 80/20 principle to cut exam study time by over 50%, completed the <a href=\"#certificate-alpha\" class=\"text-warm-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-black/20 dark:decoration-white/20 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a>, and solved 130+ LeetCode problems."
+    period: "2021 - 2025",
+    description: "Graduated with a B.Tech in CSE (8.3 CGPA). Applied the 80/20 principle to cut exam study time by over 50%, mastered core DSA patterns in Java, and solved 130+ LeetCode problems."
   }
 ];
 

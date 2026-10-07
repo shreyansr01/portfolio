@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, memo, type FC } from "react";
 import { motion, useInView } from "framer-motion";
-import { MapPin, Clock, User } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
 import { getKolkataTime, getRelativeTimeOffset } from "@/lib/time";
 
 const AboutSection: FC = () => {
@@ -82,13 +82,6 @@ const AboutSection: FC = () => {
                     : "UTC+5:30"}
                 </div>
               </div>
-            </div>
-
-            <span className="text-warm-700/60 dark:text-warm-600/40">•</span>
-
-            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
-              <User size={12} className="text-emerald-400 shrink-0" />
-              <span>23 y/o</span>
             </div>
           </div>
 

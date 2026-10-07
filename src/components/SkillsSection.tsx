@@ -1,26 +1,6 @@
-import { memo, useState, type FC } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Info, X } from "lucide-react";
+import { memo, type FC } from "react";
+import { motion } from "framer-motion";
 import { techCategories, type TechItem } from "@/data/experience";
-
-const UNIFIED_SKILL_META = {
-  shell: "bg-warm-900/90",
-  hoverBorder: "hover:border-black/20 dark:hover:border-white/20",
-  titleTone: "text-warm-100 group-hover:text-warm-50 transition-colors duration-200",
-};
-
-const FOUNDATIONAL_SKILL_META = {
-  ...UNIFIED_SKILL_META,
-  shell: "bg-warm-900/90 border-dashed border-black/15 dark:border-white/15",
-  hoverBorder: "hover:border-black/20 dark:hover:border-white/20",
-};
-
-const CATEGORY_META: Record<string, { shell: string; hoverBorder: string; titleTone: string }> = {
-  "Backend": UNIFIED_SKILL_META,
-  "Data & Infra": UNIFIED_SKILL_META,
-  "Tools": UNIFIED_SKILL_META,
-  "Foundations": FOUNDATIONAL_SKILL_META,
-};
 
 const TechPill: FC<{ item: TechItem }> = ({ item }) => {
   return (
@@ -47,83 +27,19 @@ interface TechCardProps {
 }
 
 const TechCard: FC<TechCardProps> = ({ category, index }) => {
-  const meta = CATEGORY_META[category.label] ?? UNIFIED_SKILL_META;
-  const [showTooltip, setShowTooltip] = useState(false);
-  const isFoundations = category.label === "Foundations";
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-20px" }}
       transition={{ delay: index * 0.04, duration: 0.3, ease: "easeOut" }}
-      className={`group relative rounded-2xl border border-black/[0.08] dark:border-white/[0.08] p-4 sm:p-5 flex flex-col items-center justify-start ${meta.shell} ${meta.hoverBorder} transition-colors duration-200 h-full w-full max-w-[19rem] sm:max-w-none mx-auto overflow-hidden`}
+      className="group relative rounded-2xl border border-black/[0.08] dark:border-white/[0.08] p-4 sm:p-5 flex flex-col items-center justify-start bg-warm-900/90 hover:border-black/20 dark:hover:border-white/20 transition-colors duration-200 h-full w-full max-w-[19rem] sm:max-w-none mx-auto overflow-hidden"
     >
-      {/* Glassmorphic Overlay for Foundations (matching ProjectCard pattern) */}
-      {isFoundations && (
-        <AnimatePresence>
-          {showTooltip && (
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 8 }}
-              transition={{ duration: 0.18, ease: "easeOut" }}
-              className="absolute -inset-[1px] z-30 flex flex-col bg-warm-900 border border-black/15 dark:border-white/15 p-4 sm:p-4.5 text-warm-100 info-overlay rounded-2xl shadow-2xl overflow-hidden text-left"
-              onMouseLeave={() => setShowTooltip(false)}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Overlay Header & Close Button (Connected Edge to Edge) */}
-              <div className="flex items-center justify-between border-b border-black/10 dark:border-white/10 pb-2 -mx-4 sm:-mx-4.5 px-4 sm:px-4.5 shrink-0">
-                <span className="text-[13.5px] sm:text-[14px] font-bold text-warm-100 tracking-tight">
-                  {category.label}
-                </span>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setShowTooltip(false);
-                  }}
-                  className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-black/15 dark:border-white/15 bg-black/[0.04] dark:bg-white/[0.04] text-warm-300 hover:border-warm-100 dark:hover:border-white hover:bg-warm-100 dark:hover:bg-white hover:text-warm-950 dark:hover:text-black transition-all duration-150 active:scale-95"
-                  aria-label="Close information overlay"
-                  style={{ WebkitTapHighlightColor: "transparent" }}
-                >
-                  <X size={11} strokeWidth={2} className="shrink-0" />
-                </button>
-              </div>
-
-              {/* Overlay Content */}
-              <div className="flex-1 flex flex-col justify-start pt-2.5 sm:pt-3 text-xs overflow-y-auto">
-                <p className="text-[12px] sm:text-[12.5px] text-warm-300 font-normal leading-[1.55]">
-                  High-level understanding of architectural trade-offs and use cases. No hands-on production experience yet—looking to build it within a product team.
-                </p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      )}
-
       {/* Card Header */}
       <div className="relative flex items-center justify-center gap-1.5 w-full text-center">
-        <h3 className={`text-sm sm:text-base font-semibold tracking-tight ${meta.titleTone}`}>
+        <h3 className="text-sm sm:text-base font-semibold tracking-tight text-warm-100 group-hover:text-warm-50 transition-colors duration-200">
           {category.label}
         </h3>
-
-        {/* Info Icon Trigger for Foundations */}
-        {isFoundations && (
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowTooltip(!showTooltip);
-            }}
-            onMouseEnter={() => setShowTooltip(true)}
-            aria-label="About Foundations skills"
-            className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center text-warm-500 hover:text-warm-100 transition-colors duration-200 focus-visible:outline-none z-10 -translate-y-[1px]"
-            style={{ WebkitTapHighlightColor: "transparent" }}
-          >
-            <Info size={13} strokeWidth={1.75} />
-          </button>
-        )}
 
         {/* Compact, neutral Header Badge */}
         {category.badge && (
