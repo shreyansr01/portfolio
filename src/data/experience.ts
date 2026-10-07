@@ -106,7 +106,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "2021 - 2025",
-    description: "Graduated with a B.Tech in CSE (8.3 CGPA). Applied the 80/20 principle to cut exam study time by over 50%, mastered core DSA patterns in Java, and solved 130+ LeetCode problems."
+    description: "Graduated with a B.Tech in CSE (8.3 CGPA). Applied the 80/20 principle to cut exam study time by over 50%, learned core DSA patterns in Java, and solved 130+ LeetCode problems."
   }
 ];
 

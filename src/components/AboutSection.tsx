@@ -43,8 +43,8 @@ const AboutSection: FC = () => {
           className="w-full max-w-xl sm:max-w-2xl mx-auto"
         >
           {/* Metadata Row */}
-          <div className="flex items-center justify-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs text-warm-500 font-mono font-normal mb-3 sm:mb-3.5 select-none">
-            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+          <div className="flex items-center justify-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs font-mono font-normal mb-3 sm:mb-3.5 select-none">
+            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0 text-warm-300">
               <MapPin size={12} className="text-emerald-400 shrink-0" />
               <span className="sm:hidden">India</span>
               <span className="hidden sm:inline">Kolkata, India</span>
@@ -52,36 +52,18 @@ const AboutSection: FC = () => {
 
             <span className="text-warm-700/60 dark:text-warm-600/40">•</span>
 
-            <div className="relative group/time-tooltip flex items-center shrink-0">
-              <div
-                className="flex items-center gap-1 sm:gap-1.5 cursor-default transition-colors duration-200 group-hover/time-tooltip:text-warm-300"
-                aria-label={
-                  timeInfo
-                    ? timeInfo.offset === "same time"
-                      ? "Same as your timezone (IST)"
-                      : `${timeInfo.offset} of your timezone (IST)`
-                    : "Indian Standard Time (UTC+5:30)"
-                }
-              >
-                <Clock size={12} className="text-emerald-400 shrink-0" />
-                <span>
-                  {timeInfo ? `${timeInfo.time} IST` : "IST"}
-                </span>
-              </div>
-
-              {/* Floating Tooltip */}
-              <div
-                role="tooltip"
-                className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 translate-y-1 opacity-0 transition-all duration-200 ease-out group-hover/time-tooltip:opacity-100 group-hover/time-tooltip:translate-y-0 z-50"
-              >
-                <div className="whitespace-nowrap rounded-lg border border-black/10 dark:border-white/10 bg-warm-900/95 dark:bg-warm-850/95 backdrop-blur-md px-2.5 py-1 text-[11px] font-sans font-medium text-warm-200 shadow-xl">
-                  {timeInfo
-                    ? timeInfo.offset === "same time"
-                      ? "Same as your timezone"
-                      : `${timeInfo.offset} of your timezone`
-                    : "UTC+5:30"}
-                </div>
-              </div>
+            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+              <Clock size={12} className="text-emerald-400 shrink-0" />
+              <span className="text-warm-300">
+                {timeInfo ? (
+                  <>
+                    <span>{timeInfo.time}</span>{" "}
+                    <span className="text-warm-500">
+                      <span className="text-warm-600 dark:text-warm-600/80">//</span> {timeInfo.offset}
+                    </span>
+                  </>
+                ) : null}
+              </span>
             </div>
           </div>
 

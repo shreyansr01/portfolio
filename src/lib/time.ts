@@ -56,6 +56,6 @@ export function getRelativeTimeOffset(): string {
       return `${hours}h ${mins}m ${direction}`;
     }
   } catch {
-    return "IST";
+    return "same time";
   }
 }
