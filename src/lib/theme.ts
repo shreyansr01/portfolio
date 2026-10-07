@@ -2,12 +2,12 @@ import { useState, useEffect, useCallback } from "react";
 
 export type Theme = "dark" | "light";
 
-const THEME_STORAGE_KEY = "shreyandev-theme";
+const THEME_STORAGE_KEY = "portfolio-theme";
 
 export function getInitialTheme(): Theme {
   if (typeof window === "undefined") return "dark";
 
-  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) as Theme | null;
+  const savedTheme = (localStorage.getItem(THEME_STORAGE_KEY) || localStorage.getItem("shreyandev-theme")) as Theme | null;
   if (savedTheme === "light" || savedTheme === "dark") {
     return savedTheme;
   }

@@ -25,8 +25,8 @@
   <script>
     (function () {
       try {
-        var key = 'shreyandev-theme';
-        var saved = localStorage.getItem(key);
+        var key = 'portfolio-theme';
+        var saved = localStorage.getItem(key) || localStorage.getItem('shreyandev-theme');
         var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
         if (saved === 'light' || (!saved && prefersLight)) {
           document.documentElement.classList.add('light');

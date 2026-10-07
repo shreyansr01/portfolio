@@ -1,12 +1,12 @@
-# ShreyanDev
+# Portfolio
 
-> Personal developer portfolio and interactive terminal simulator.
+> Personal developer portfolio and project showcase.
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-shreyandev.vercel.app-blue?style=flat-square)](https://shreyandev.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-shreyansr.vercel.app-blue?style=flat-square)](https://shreyansr.vercel.app)
 
 ---
 
-<img src="public/readme_home_page.png" width="100%" alt="ShreyanDev Portfolio Preview" />
+<img src="public/readme_home_page.png" width="100%" alt="Portfolio Preview" />
 
 ---
 
@@ -32,8 +32,8 @@
 
 ```bash
 # Clone and install dependencies
-git clone https://github.com/shreyansr01/shreyan-dev.git
-cd shreyan-dev
+git clone https://github.com/shreyansr01/portfolio.git
+cd portfolio
 npm install
 
 # Start local dev server
@@ -44,4 +44,4 @@ npm run dev
 
 ## Author
 
-**Shreyan Sardar** — [Portfolio](https://shreyandev.vercel.app) · [GitHub](https://github.com/shreyansr01) · [LinkedIn](https://www.linkedin.com/in/shreyansardar/)
+**Shreyan Sardar** — [Portfolio](https://shreyansr.vercel.app) · [GitHub](https://github.com/shreyansr01) · [LinkedIn](https://www.linkedin.com/in/shreyansardar/)
