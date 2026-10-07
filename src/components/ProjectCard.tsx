@@ -189,9 +189,11 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
           src={project.image}
           alt={project.title}
           className={cn(
-            "w-full h-full transition-transform duration-400 ease-out",
-            isFocused ? "scale-[1.02]" : "group-hover:scale-[1.02]",
-            "object-cover object-top"
+            "w-full h-full object-cover object-top transition-all duration-500 ease-out",
+            "sm:grayscale sm:opacity-90",
+            isFocused
+              ? "scale-[1.02] sm:grayscale-0 sm:opacity-100"
+              : "group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100"
           )}
           loading="lazy"
         />
