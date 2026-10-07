@@ -61,8 +61,8 @@ const FOOTER_LINKS = [
 
 const Footer: FC = () => {
   return (
-    <footer id="contact" className="relative z-10 pt-10 sm:pt-14 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden border-t border-black/[0.06] dark:border-white/[0.05]">
-      <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center justify-center">
+    <footer id="contact" className="relative z-10 pt-10 sm:pt-14 pb-0 bg-transparent overflow-hidden border-t border-black/[0.06] dark:border-white/[0.05]">
+      <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-warm-100 mb-2.5 sm:mb-3 tracking-tight text-center leading-tight">
           Let&apos;s build something dependable<span className="text-emerald-500">.</span>
         </h2>
@@ -102,6 +102,30 @@ const Footer: FC = () => {
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Calcutta Riverfront Panorama */}
+      <div className="relative w-full mt-0.5 sm:mt-3 overflow-hidden select-none pointer-events-none">
+        {/* Soft gradient fade so the sky dissolves seamlessly into background */}
+        <div className="absolute inset-x-0 top-0 h-8 sm:h-16 bg-gradient-to-b from-background to-transparent z-10" />
+
+        {/* Light Mode */}
+        <img
+          src="/calcutta-etching.png"
+          alt="Vintage Calcutta Riverfront Etching"
+          loading="lazy"
+          decoding="async"
+          className="w-full h-32 sm:h-56 md:h-64 object-cover object-bottom mix-blend-multiply opacity-90 dark:hidden"
+        />
+
+        {/* Dark Mode */}
+        <img
+          src="/calcutta-etching-dark.png"
+          alt="Vintage Calcutta Riverfront Etching (Night)"
+          loading="lazy"
+          decoding="async"
+          className="w-full h-32 sm:h-56 md:h-64 object-cover object-bottom hidden dark:block mix-blend-screen opacity-90"
+        />
       </div>
     </footer>
   );
