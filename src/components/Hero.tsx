@@ -1,16 +1,22 @@
-import { useState, memo, type FC } from "react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect, memo, type FC } from "react";
 import { motion } from "framer-motion";
-import { FileText, Mail } from "lucide-react";
-import PdfModal from "./PdfModal";
+import { FileText, MapPin, Clock } from "lucide-react";
+import { getKolkataTime, getRelativeTimeOffset } from "@/lib/time";
 
 const Hero: FC = () => {
-  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const [timeInfo, setTimeInfo] = useState<{ time: string; offset: string } | null>(null);
 
-  const scrollToContact = () => {
-    const el = document.getElementById("contact");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+  useEffect(() => {
+    const updateTime = () => {
+      setTimeInfo({
+        time: getKolkataTime(),
+        offset: getRelativeTimeOffset(),
+      });
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToJourney = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -24,84 +30,98 @@ const Hero: FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-[52vh] sm:min-h-[58vh] lg:min-h-[64vh] flex items-center justify-center overflow-hidden bg-transparent">
-      {/* Content */}
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="flex flex-col items-center text-center max-w-xl mx-auto"
+    <section id="about" className="relative w-full pt-28 pb-14 sm:pt-36 sm:pb-18 lg:pt-40 lg:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-transparent">
+      <div id="home" className="sr-only" aria-hidden="true" />
+      <div className="relative z-10 max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          className="flex flex-col items-center text-center max-w-xl mx-auto"
+        >
+          {/* Name */}
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.05, duration: 0.3 }}
+            className="text-[32px] sm:text-[38px] md:text-[42px] lg:text-[44px] font-bold tracking-tight text-warm-100 mb-3 sm:mb-3.5 leading-tight"
           >
-            {/* Name */}
-            <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.05, duration: 0.3 }}
-              className="text-[32px] sm:text-[38px] md:text-[42px] lg:text-[44px] font-bold tracking-tight text-warm-100 mb-2.5 sm:mb-3 leading-tight text-center"
-            >
-              Shreyan Sardar
-            </motion.h1>
+            Shreyan Sardar
+          </motion.h1>
 
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.15, duration: 0.3 }}
-              className="text-[15px] sm:text-[15.5px] md:text-[16px] text-warm-300 font-normal mb-5 sm:mb-6 max-w-[28rem] sm:max-w-[32rem] leading-[1.6] text-center"
-            >
-              Building backend systems. Shipping end-to-end using AI agents. Studying{" "}
+          {/* Metadata Row: Location & Live Time */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1, duration: 0.3 }}
+            className="flex items-center justify-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs font-mono font-normal mb-6 sm:mb-7 select-none"
+          >
+            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0 text-warm-300">
+              <MapPin size={12} className="text-emerald-400 shrink-0" />
+              <span className="sm:hidden">India</span>
+              <span className="hidden sm:inline">Kolkata, India</span>
+            </div>
+
+            <span className="text-warm-700/60 dark:text-warm-600/40">•</span>
+
+            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+              <Clock size={12} className="text-emerald-400 shrink-0" />
+              <span className="text-warm-300">
+                {timeInfo ? (
+                  <>
+                    <span>{timeInfo.time}</span>{" "}
+                    <span className="text-warm-500">
+                      <span className="text-warm-600 dark:text-warm-600/80">//</span> {timeInfo.offset}
+                    </span>
+                  </>
+                ) : null}
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Bio & Core Narrative */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.15, duration: 0.3 }}
+            className="text-[14.5px] sm:text-[15.5px] md:text-[16px] text-warm-300 font-normal leading-[1.65] max-w-[32rem] space-y-3 mb-7 sm:mb-8"
+          >
+            <p className="text-warm-200">
+              I&apos;m a software engineer focused on backend systems. I build with Python (FastAPI) and Java (Spring Boot), shipping end-to-end using AI agents—8 projects built and 6 deployed.
+            </p>
+            <p className="text-warm-400">
+              What drives me is understanding systems from the ground up, breaking complex problems down to{" "}
               <a
                 href="#journey"
                 onClick={scrollToJourney}
                 className="text-warm-200 underline decoration-black/20 dark:decoration-white/20 hover:text-emerald-400 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200 font-normal"
               >
-                computer science from first principles
+                first principles
               </a>
-              .
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.3 }}
-              className="flex flex-row items-center justify-center gap-2.5"
-            >
-              <Button
-                type="button"
-                variant="outline"
-                className="group w-[106px] rounded-full py-1 h-8 text-xs font-mono font-medium tracking-wide border border-black/10 dark:border-white/15 bg-black/[0.03] dark:bg-white/[0.03] text-warm-100 hover:bg-warm-100 dark:hover:bg-white hover:text-warm-950 dark:hover:text-black hover:border-warm-100 dark:hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
-                onClick={() => setIsResumeModalOpen(true)}
-              >
-                <FileText size={12} className="mr-1 text-warm-200 group-hover:text-warm-950 dark:group-hover:text-black transition-colors duration-200" />
-                Resume
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                className="group w-[102px] rounded-full py-1 h-8 text-xs font-mono font-medium tracking-wide border border-black/10 dark:border-white/15 bg-black/[0.03] dark:bg-white/[0.03] text-warm-100 hover:bg-warm-100 dark:hover:bg-white hover:text-warm-950 dark:hover:text-black hover:border-warm-100 dark:hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
-                onClick={scrollToContact}
-              >
-                <Mail size={12} className="mr-1 text-warm-200 group-hover:text-warm-950 dark:group-hover:text-black transition-colors duration-200" />
-                Contact
-              </Button>
-            </motion.div>
+              , and exploring beyond code.
+            </p>
           </motion.div>
-        </div>
-      </div>
 
-      <PdfModal
-        isOpen={isResumeModalOpen}
-        onClose={() => setIsResumeModalOpen(false)}
-        title="Resume"
-        pdfPath="/Shreyan_Sardar_Resume.pdf"
-        downloadName="Shreyan_Sardar_Resume.pdf"
-        downloadLabel="Download PDF"
-        newTabZoom={73}
-      />
-    </div>
+          {/* Resume CTA (opens PDF in new tab with 80% zoom and closed sidebar) */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.3 }}
+            className="flex items-center justify-center"
+          >
+            <a
+              href="/Shreyan_Sardar_Resume.pdf#navpanes=0&pagemode=none&zoom=80"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-1.5 w-[112px] rounded-full py-1 h-8 text-xs font-mono font-medium tracking-wide border border-black/10 dark:border-white/15 bg-black/[0.03] dark:bg-white/[0.03] text-warm-100 hover:bg-warm-100 dark:hover:bg-white hover:text-warm-950 dark:hover:text-black hover:border-warm-100 dark:hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] select-none"
+            >
+              <FileText size={12} className="text-warm-200 group-hover:text-warm-950 dark:group-hover:text-black transition-colors duration-200 shrink-0" />
+              <span>Resume</span>
+            </a>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

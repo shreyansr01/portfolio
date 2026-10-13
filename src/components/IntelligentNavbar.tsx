@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: "Projects", to: "#projects" },
   { label: "Skills", to: "#skills" },
   { label: "Journey", to: "#journey" },
+  { label: "Contact", to: "#contact" },
 ];
 
 export default function IntelligentNavbar() {

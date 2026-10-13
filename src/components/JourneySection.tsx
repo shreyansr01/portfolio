@@ -70,7 +70,7 @@ const JourneySection: FC = () => {
           className="text-center mb-5 sm:mb-6"
         >
           <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-warm-100 tracking-tight">
-            <span className="font-mono text-warm-600 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">04 //</span>Journey
+            <span className="font-mono text-warm-600 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">03 //</span>Journey
           </h2>
         </motion.div>
 
