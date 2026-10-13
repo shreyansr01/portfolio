@@ -214,9 +214,8 @@ export default function IntelligentNavbar() {
                   className="w-full border-t border-black/[0.08] dark:border-white/[0.08] px-2 pt-1.5 pb-1.5"
                 >
                   <ul className="flex flex-col gap-0.5">
-                    {NAV_LINKS.map((nav, i) => {
+                    {NAV_LINKS.map((nav) => {
                       const isActive = active === nav.label;
-                      const indexStr = String(i + 1).padStart(2, "0");
 
                       return (
                         <li key={nav.label}>
@@ -224,23 +223,13 @@ export default function IntelligentNavbar() {
                             href={nav.to}
                             onClick={(e) => handleNavClick(e, nav.to)}
                             className={clsx(
-                              "flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-mono tracking-normal font-medium transition-colors duration-150 active:scale-[0.98]",
+                              "flex items-center px-3 py-1.5 rounded-xl text-xs font-mono tracking-normal font-medium transition-colors duration-150 active:scale-[0.98]",
                               isActive
                                 ? "text-warm-100 bg-black/5 dark:bg-white/10 font-semibold"
                                 : "text-warm-400 hover:text-warm-100 hover:bg-black/5 dark:hover:bg-white/5"
                             )}
                           >
                             <span>{nav.label}</span>
-                            <span
-                              className={clsx(
-                                "text-[11px] font-mono transition-colors duration-150",
-                                isActive
-                                  ? "text-warm-100 font-semibold"
-                                  : "text-warm-600/70"
-                              )}
-                            >
-                              {indexStr}
-                            </span>
                           </a>
                         </li>
                       );

@@ -43,11 +43,6 @@ const FileTextIcon = ({ className }: { className?: string }) => (
 
 const FOOTER_LINKS = [
   {
-    name: "Resume",
-    href: "/Shreyan_Sardar_Resume.pdf#navpanes=0&pagemode=none&zoom=80",
-    icon: FileTextIcon,
-  },
-  {
     name: "GitHub",
     href: "https://github.com/shreyansr01",
     icon: GitHubIcon,
@@ -66,6 +61,11 @@ const FOOTER_LINKS = [
     name: "Twitter",
     href: "https://x.com/shreyansr01",
     icon: XIcon,
+  },
+  {
+    name: "Resume",
+    href: "/Shreyan_Sardar_Resume.pdf#navpanes=0&pagemode=none&zoom=80",
+    icon: FileTextIcon,
   },
   {
     name: "LeetCode",

@@ -1,6 +1,6 @@
 import { useState, useEffect, memo, type FC } from "react";
 import { motion } from "framer-motion";
-import { FileText, MapPin, Clock } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
 import { getKolkataTime, getRelativeTimeOffset } from "@/lib/time";
 
 const Hero: FC = () => {
@@ -84,7 +84,7 @@ const Hero: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.15, duration: 0.3 }}
-            className="text-[14.5px] sm:text-[15.5px] md:text-[16px] text-warm-300 font-normal leading-[1.65] max-w-[32rem] space-y-3 mb-7 sm:mb-8"
+            className="text-[14.5px] sm:text-[15.5px] md:text-[16px] text-warm-300 font-normal leading-[1.65] max-w-[32rem] space-y-3"
           >
             <p className="text-warm-200">
               I&apos;m a software engineer focused on backend systems. I build with Python (FastAPI) and Java (Spring Boot), shipping end-to-end using AI agents—8 projects built and 6 deployed.
@@ -100,24 +100,6 @@ const Hero: FC = () => {
               </a>
               , and exploring beyond code.
             </p>
-          </motion.div>
-
-          {/* Resume CTA (opens PDF in new tab with 80% zoom and closed sidebar) */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.3 }}
-            className="flex items-center justify-center"
-          >
-            <a
-              href="/Shreyan_Sardar_Resume.pdf#navpanes=0&pagemode=none&zoom=80"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-1.5 w-[112px] rounded-full py-1 h-8 text-xs font-mono font-medium tracking-wide border border-black/10 dark:border-white/15 bg-black/[0.03] dark:bg-white/[0.03] text-warm-100 hover:bg-warm-100 dark:hover:bg-white hover:text-warm-950 dark:hover:text-black hover:border-warm-100 dark:hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] select-none"
-            >
-              <FileText size={12} className="text-warm-200 group-hover:text-warm-950 dark:group-hover:text-black transition-colors duration-200 shrink-0" />
-              <span>Resume</span>
-            </a>
           </motion.div>
         </motion.div>
       </div>
