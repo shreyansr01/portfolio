@@ -18,15 +18,17 @@ const Hero: FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToJourney = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const scrollToTarget = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    const target = document.getElementById("journey");
+    const target = document.getElementById(id);
     if (target) {
       const navOffset = window.innerWidth < 640 ? 70 : 80;
       const targetPosition = window.scrollY + target.getBoundingClientRect().top - navOffset;
       window.scrollTo({ top: Math.max(0, targetPosition), behavior: "smooth" });
     }
-    window.dispatchEvent(new CustomEvent("focus-journey-present"));
+    if (id === "journey") {
+      window.dispatchEvent(new CustomEvent("focus-journey-present"));
+    }
   };
 
   return (
@@ -87,13 +89,21 @@ const Hero: FC = () => {
             className="text-[14.5px] sm:text-[15.5px] md:text-[16px] text-warm-300 font-normal leading-[1.65] max-w-[32rem] space-y-3"
           >
             <p className="text-warm-200">
-              I&apos;m a software engineer focused on backend systems. I build with Python (FastAPI) and Java (Spring Boot), shipping end-to-end using AI agents—8 projects built and 6 deployed.
+              I build with AI agents, backed by my{" "}
+              <a
+                href="#skills"
+                onClick={(e) => scrollToTarget(e, "skills")}
+                className="text-warm-200 underline decoration-black/20 dark:decoration-white/20 hover:text-emerald-400 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200 font-normal"
+              >
+                backend foundation
+              </a>
+              . When a project needs tools outside my stack, I use agents to ship—8 apps built, 6 deployed.
             </p>
             <p className="text-warm-400">
-              What drives me is understanding systems from the ground up, breaking complex problems down to{" "}
+              What drives me is understanding systems from the ground up, breaking problems down to{" "}
               <a
                 href="#journey"
-                onClick={scrollToJourney}
+                onClick={(e) => scrollToTarget(e, "journey")}
                 className="text-warm-200 underline decoration-black/20 dark:decoration-white/20 hover:text-emerald-400 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200 font-normal"
               >
                 first principles
