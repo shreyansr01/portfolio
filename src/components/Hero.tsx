@@ -97,7 +97,7 @@ const Hero: FC = () => {
               >
                 backend foundation
               </a>
-              . I direct agents to build and ship software end-to-end (8 apps built, 6 deployed).
+              . I direct agents to build and ship end-to-end (8 apps built, 6 deployed).
             </p>
             <p className="text-warm-400">
               What drives me is understanding systems from the ground up, breaking problems down to{" "}
