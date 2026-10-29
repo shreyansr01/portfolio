@@ -89,7 +89,7 @@ const Hero: FC = () => {
             className="text-[14.5px] sm:text-[15.5px] md:text-[16px] text-warm-300 font-normal leading-[1.65] max-w-[32rem] space-y-3"
           >
             <p className="text-warm-200">
-              I build with AI agents, backed by my{" "}
+              Software engineer and AI agent manager, backed by my{" "}
               <a
                 href="#skills"
                 onClick={(e) => scrollToTarget(e, "skills")}
@@ -97,7 +97,7 @@ const Hero: FC = () => {
               >
                 backend foundation
               </a>
-              . When a project needs tools outside my stack, I use agents to ship—8 apps built, 6 deployed.
+              . I direct agents to build and ship software end-to-end (8 apps built, 6 deployed).
             </p>
             <p className="text-warm-400">
               What drives me is understanding systems from the ground up, breaking problems down to{" "}
