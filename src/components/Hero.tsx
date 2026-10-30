@@ -1,10 +1,14 @@
-import { useState, useEffect, memo, type FC } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef, memo, type FC } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Clock } from "lucide-react";
 import { getKolkataTime, getRelativeTimeOffset } from "@/lib/time";
 
 const Hero: FC = () => {
   const [timeInfo, setTimeInfo] = useState<{ time: string; offset: string } | null>(null);
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
+  const tooltipRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const tooltipTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const updateTime = () => {
@@ -17,6 +21,63 @@ const Hero: FC = () => {
     const interval = setInterval(updateTime, 10000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleMouseEnter = () => {
+    if (typeof window !== "undefined" && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      if (tooltipTimeoutRef.current) clearTimeout(tooltipTimeoutRef.current);
+      setIsTooltipOpen(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (typeof window !== "undefined" && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      tooltipTimeoutRef.current = setTimeout(() => {
+        setIsTooltipOpen(false);
+      }, 150);
+    }
+  };
+
+  const handleTriggerClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (tooltipTimeoutRef.current) clearTimeout(tooltipTimeoutRef.current);
+    setIsTooltipOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (!isTooltipOpen) return;
+
+    const handlePointerDown = (e: PointerEvent | TouchEvent) => {
+      const target = e.target as Node;
+      if (
+        tooltipRef.current &&
+        !tooltipRef.current.contains(target) &&
+        triggerRef.current &&
+        !triggerRef.current.contains(target)
+      ) {
+        setIsTooltipOpen(false);
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsTooltipOpen(false);
+      }
+    };
+
+    const timer = setTimeout(() => {
+      document.addEventListener("pointerdown", handlePointerDown);
+      document.addEventListener("touchstart", handlePointerDown, { passive: true });
+      document.addEventListener("keydown", handleKeyDown);
+    }, 10);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isTooltipOpen]);
 
   const scrollToTarget = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -39,7 +100,7 @@ const Hero: FC = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
-          className="flex flex-col items-center text-center max-w-xl mx-auto"
+          className="flex flex-col items-center text-center max-w-xl mx-auto w-full"
         >
           {/* Name */}
           <motion.h1
@@ -86,30 +147,77 @@ const Hero: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.15, duration: 0.3 }}
-            className="text-[14.5px] sm:text-[15.5px] md:text-[16px] text-warm-300 font-normal leading-[1.65] max-w-[32rem] space-y-3"
+            className="relative text-[14.5px] sm:text-[15.5px] md:text-[16px] text-warm-300 font-normal leading-[1.65] w-full max-w-[32rem]"
           >
-            <p className="text-warm-200">
-              Software engineer and AI agent manager, backed by my{" "}
-              <a
-                href="#skills"
-                onClick={(e) => scrollToTarget(e, "skills")}
-                className="text-warm-200 underline decoration-black/20 dark:decoration-white/20 hover:text-emerald-400 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200 font-normal"
-              >
-                backend foundation
-              </a>
-              . I direct agents to build and ship end-to-end (8 apps built, 6 deployed).
-            </p>
-            <p className="text-warm-400">
-              What drives me is understanding systems from the ground up, breaking problems down to{" "}
-              <a
-                href="#journey"
-                onClick={(e) => scrollToTarget(e, "journey")}
-                className="text-warm-200 underline decoration-black/20 dark:decoration-white/20 hover:text-emerald-400 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200 font-normal"
-              >
-                first principles
-              </a>
-              , and exploring beyond code.
-            </p>
+            {/* Mobile tap-outside barrier */}
+            {isTooltipOpen && (
+              <div
+                className="fixed inset-0 z-40 bg-transparent sm:hidden"
+                onClick={() => setIsTooltipOpen(false)}
+                onTouchStart={() => setIsTooltipOpen(false)}
+                aria-hidden="true"
+              />
+            )}
+
+            {/* Centered Floating Tooltip (Absolute Overlay - zero layout shift) */}
+            <AnimatePresence>
+              {isTooltipOpen && (
+                <motion.div
+                  ref={tooltipRef}
+                  id="agent-manager-tooltip"
+                  role="tooltip"
+                  initial={{ opacity: 0, y: 6, x: "-50%", scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, x: "-50%", scale: 1 }}
+                  exit={{ opacity: 0, y: 4, x: "-50%", scale: 0.98 }}
+                  transition={{ duration: 0.15, ease: "easeOut" }}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  className="absolute bottom-full left-1/2 mb-3.5 z-50 w-[calc(100vw-2.5rem)] sm:w-[24rem] max-w-[24rem] p-3.5 sm:p-4 rounded-2xl border border-black/10 dark:border-white/10 bg-warm-900 shadow-xl dark:shadow-[0_16px_40px_rgba(0,0,0,0.7)] text-left pointer-events-auto select-none"
+                >
+                  <p className="text-[13px] sm:text-[13.5px] text-warm-200 font-normal leading-relaxed">
+                    I manage coding agents with custom rules and skills to iteratively build and refine features. I've worked with Cursor and various CLIs, and now rely on Antigravity for my daily workflow.
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <div className="space-y-3">
+              <p className="text-warm-200">
+                Software engineer and{" "}
+                <button
+                  ref={triggerRef}
+                  type="button"
+                  onClick={handleTriggerClick}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  aria-expanded={isTooltipOpen}
+                  aria-describedby="agent-manager-tooltip"
+                  className="text-warm-200 underline decoration-black/20 dark:decoration-white/20 hover:text-emerald-400 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200 font-normal cursor-pointer inline text-left bg-transparent p-0 border-0 focus:outline-none"
+                >
+                  AI agent manager
+                </button>
+                , backed by my{" "}
+                <a
+                  href="#skills"
+                  onClick={(e) => scrollToTarget(e, "skills")}
+                  className="text-warm-200 underline decoration-black/20 dark:decoration-white/20 hover:text-emerald-400 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200 font-normal"
+                >
+                  backend foundation
+                </a>
+                . I direct agents to build and ship end-to-end (8 apps built, 6 deployed).
+              </p>
+              <p className="text-warm-400">
+                What drives me is understanding systems from the ground up, breaking problems down to{" "}
+                <a
+                  href="#journey"
+                  onClick={(e) => scrollToTarget(e, "journey")}
+                  className="text-warm-200 underline decoration-black/20 dark:decoration-white/20 hover:text-emerald-400 hover:decoration-emerald-400 dark:hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200 font-normal"
+                >
+                  first principles
+                </a>
+                , and exploring beyond code.
+              </p>
+            </div>
           </motion.div>
         </motion.div>
       </div>
